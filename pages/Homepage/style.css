@@ -92,3 +92,17 @@ body {
     justify-content: space-between;
     width: 100%;
 }
+
+.align-start{
+    display: flex;
+    justify-content: flex-start;   
+}
+
+.sidenav_container{
+    width: 20%;
+}
+
+.sidenav_icon{
+    width: 16px;
+    height: 16px;
+}
