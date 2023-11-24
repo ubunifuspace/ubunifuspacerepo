@@ -1,0 +1,237 @@
+*{
+    box-sizing: border-box;
+    
+    
+}
+
+body{
+    background-image: linear-gradient(to left, #008000E0, #08E708E0);
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+#logo{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img{
+    margin: 1rem;
+    width: 300px;
+    height: 300px;
+}
+
+#innovation_Icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+/* #innovation_Icon img{
+    width: 449.19px;
+    height: 477.92px;
+    margin-top: 8rem;
+    left: 207.91px;
+    
+} */
+
+#welcome_Note h1{
+    margin-left: 8rem;
+    font-weight: 800;
+    font-size: 55px;
+    color: #ffffff;
+}
+
+#ubunifu_Space{
+    align-items: end;
+    margin-left: 8rem;
+    font-weight: 800;
+    font-size: 55px;
+    color: #ffffff;
+}
+
+h1{
+    text-align: left;
+    color:white;
+}
+
+
+
+#form-container{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to left, #08AC08, #08AC08);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 12px;
+    width: 40%;
+}
+
+form{
+    
+    width: 100%;
+    
+   
+    
+    
+    
+}
+
+.formGroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .25rem;
+    padding: 20px;
+}
+
+.formLabel{
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    
+    
+}
+
+.formiInput{
+    
+    height: 4rem;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+#forgot-password{
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: end;
+}
+
+#new-here{
+    color: white;
+    text-align: end;
+}
+
+#signUp_link{
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signIn_Button_Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .25rem;
+    padding: 20px;
+}
+
+#signIn_Button{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+    #innovation_Icon{
+        display: none;
+    }
+
+    #container{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #form-container{
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to left, #08AC08, #08AC08);
+        padding: 10px;
+        margin: 10px;
+        border-radius: 12px;
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+    #container{
+        margin-top: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #form-container{
+        
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to left, #08AC08, #08AC08);
+        border-radius: 12px;
+        width: 100%;
+    }
+
+    #logo img{
+        margin: 1rem;
+        width: 100px;
+        height: 100px;
+    }
+
+    .formGroup{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+    
+    .formLabel{
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        
+        
+    }
+    
+    .formiInput{
+        
+        height: 2.5rem;
+        border-radius: 5px;
+        
+    }
+    
+    #forgot-password{
+        color: blue;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: end;
+    }
+    
+
+}
