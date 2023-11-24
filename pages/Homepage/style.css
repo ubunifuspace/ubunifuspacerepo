@@ -182,13 +182,13 @@ body {
     flex-direction: column;
     margin-top: 1rem;
 }
-
+/* 
 .green_bg_no_padding{
     background-color: #BEE9AF;
     border-radius: 20px;
     width: fit-content;
 
-}
+} */
 
 .controls_container{
     display: flex;
@@ -204,4 +204,13 @@ body {
 
 .font_heavy{
     font-weight: 800;
+}
+
+.green_wrap{
+    background-color: #BEE9AF;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
