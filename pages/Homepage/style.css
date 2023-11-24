@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap');
+
 html{
     margin: 0;
     padding: 0;
@@ -7,6 +9,7 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;
+    font-family: 'Mulish', sans-serif;
 }
 
 @media screen and (max-width: 600px) {
@@ -60,7 +63,7 @@ body {
 .side_navigation{
     background-color: #D9D9D9;
     margin: 1rem;
-    border-radius: 20px    
+    border-radius: 20px;    
 }
 
 .main_content{
@@ -69,7 +72,7 @@ body {
 
 .side_navigation{
     padding: 0 1rem;
-    width: 50%;
+    width: 20%;
     display: flex;
     flex-direction: column;
 }
@@ -78,6 +81,8 @@ body {
     display: flex;
     width: 100%;
     justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .heavy_head{
@@ -89,7 +94,6 @@ body {
 
 .sidenav_content{
     display: flex;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -105,4 +109,108 @@ body {
 .sidenav_icon{
     width: 16px;
     height: 16px;
+}
+
+.sidenav_text{
+    font-size: 1.5rem;
+}
+
+.profile_column{
+    width: 22%;
+}
+
+.center_column{
+    width: 60%;  
+    padding: 1rem 2rem;
+}
+
+.profile_card{
+    background-color: #D9D9D9;
+    margin: 1rem;
+    border-radius: 20px; 
+    padding: 1rem;
+}
+
+.avatar_image{
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+}
+
+.faint-text{
+    font-size: 1.3rem;
+    color: #000000;
+    font-weight: 400;
+}
+
+.bolder-text{
+    font-size: 16px;
+    color: #000000;
+    font-weight: 800;
+}
+
+.text_below{
+    padding: 0;
+    margin: 0;
+}
+
+.line-style{
+    width: 50%;
+    border: 2px solid black;
+}
+
+.stat_number{
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.green_bg{
+    border-radius: 20px;
+    background-color: #BEE9AF;
+    margin: 1rem;
+    padding: 0.3rem;
+}
+
+.grey-bg{
+    background-color: #D9D9D9;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.idea_container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+/* 
+.green_bg_no_padding{
+    background-color: #BEE9AF;
+    border-radius: 20px;
+    width: fit-content;
+
+} */
+
+.controls_container{
+    display: flex;
+    justify-content: space-between;    
+    padding: 0 1.2rem;
+}
+
+.idea_text{
+    font-weight: 500;
+    font-size: 24px;
+    padding: 0 1.2rem;
+}
+
+.font_heavy{
+    font-weight: 800;
+}
+
+.green_wrap{
+    background-color: #BEE9AF;
+    padding: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
