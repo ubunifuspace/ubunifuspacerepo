@@ -1,7 +1,26 @@
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
 
 const Login = () => {
+
+  const [inputs, setInputs] = useState({});
+  const navigate = useNavigate();
+
+  const handleChange =(event) => {
+
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values =>({...values, [name]: value}));
+
+  }
+
+  const handleSubmit = (event)=>{
+    event.preventDefault();
+    console.log(inputs)
+  }
+
+
   return (
     <div id="SignIn_container">
       <div id="top_Icon_SignInPage">
@@ -16,7 +35,7 @@ const Login = () => {
         </div>
       </div>
       <div id="form-SignIn-container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div id="signIn_Components">
             <div id="signIn_logo">
         
@@ -29,7 +48,10 @@ const Login = () => {
                   <input
                     className="formiInput"
                     type="text"
+                    name="identity"
+                    value={inputs.identity || ""}
                     placeholder="Employee ID"
+                    onChange={handleChange}
                   ></input>
                 </label>
               </div>
@@ -40,7 +62,10 @@ const Login = () => {
                   <input
                     className="formiInput"
                     type="password"
-                    placeholder="password"
+                    name="password"
+                    value={inputs.password || ""}
+                    placeholder="Password"
+                    onChange={handleChange}
                   ></input>
                 </label>
               </div>
