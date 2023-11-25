@@ -13,7 +13,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10rem;
+    gap: 1rem;
 }
 
 #innovation_Icon{
@@ -26,15 +26,13 @@ body{
 }
 
 #innovation_Icon img{
-    width: 449.19px;
-    height: 477.92px;
+    width: 360px;
+    height:360px;
     margin-top: 1rem;
-    left: 207.91px;
     
 }
 
 #welcome_Note h1{
-    margin-left: 8rem;
     font-weight: 800;
     font-size: 55px;
     color: #ffffff;
@@ -42,7 +40,7 @@ body{
 
 #ubunifu_Space{
     align-items: end;
-    margin-left: 16.5rem;
+    margin-left: 1rem;
     font-weight: 800;
     font-size: 55px;
     color: #ffffff;
@@ -88,8 +86,8 @@ form h1{
 
 .formiInput{
     
-    height: 4rem;
-    border-radius: 10px;
+    height: 2.5rem;
+    border-radius: 5px;
     font-size: medium;
     font-weight: bold;
 }
@@ -200,7 +198,7 @@ form h1{
     .formiInput{
         
         height: 2.5rem;
-        border-radius: 5px;
+        border-radius: 6px;
         
     }
     
