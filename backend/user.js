@@ -42,34 +42,34 @@ app.listen(port, () => {
 
 // // code foer users signup   API
 
-staff_id = 123
-name = "john"
-email ="john@gmail.com"
-password =123
-department= "ict"
-role_id=1
+  staff_id = 123
+  name = "john"
+  email ="john@gmail.com"
+  password =123
+  department= "ict"
+  role_id=1
 
 
 
-db.query(
-    "INSERT INTO users (staff_id, name, email, password,department, role_id) VALUES( ?, ?, ?,? ,?,?)",
-    [   staff_id,
-        name,
-        email,
-        password,
-        department,
-        role_id],
-    (error, results) => {
-      if (error) {
-        console.error("Error inserting student to users:", error);
-        return res.status(500).json({
-          error: true,
-          message: "Error inserting student",
-        });
+  db.query(
+      "INSERT INTO users (staff_id, name, email, password,department, role_id) VALUES( ?, ?, ?,? ,?,?)",
+      [   staff_id,
+          name,
+          email,
+          password,
+          department,
+          role_id],
+      (error, results) => {
+        if (error) {
+          console.error("Error inserting student to users:", error);
+          return res.status(500).json({
+            error: true,
+            message: "Error inserting student",
+          });
+        }
+
       }
-
-    }
-  );
+    );
 
 
 // code for users signin
