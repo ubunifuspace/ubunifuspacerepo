@@ -4,8 +4,17 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import InfoIcon from '@mui/icons-material/Info';
 import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRounded';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+import { red } from '@mui/material/colors';
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 const Homepage = () => {
+
+    const [ opened, { open, close }] = useDisclosure(false);
+    const [ challenge, { openChallenge, closeChallenge }] = useDisclosure(false);
+
     return (
         <div>
             <header>
@@ -14,7 +23,7 @@ const Homepage = () => {
                         <p className="title">Ubunifu space</p>
                     </div>
                     <div className="hamburger_menu">
-                        <p>Sample text</p>
+                        <MenuRoundedIcon />
                     </div>
                 </nav>
             </header>
@@ -31,13 +40,13 @@ const Homepage = () => {
                             <div className="sidenav_container center_div">
                                 <PostAddIcon />
                             </div>
-                            <div className='align_start'>
-                                <p className="heavy_head align-start sidenav_text">Submit challenge</p>
+                            <div className='align_start '>
+                                <p className="heavy_head align-start sidenav_text  " onClick={open}>Submit challenge</p>
                             </div>
                         </div>
                         <div className="sidenav_content">
                             <div className="sidenav_container center_div">
-                                <ShowChartIcon/>
+                                <ShowChartIcon />
                             </div>
                             <div className='align_start'>
                                 <p className="heavy_head align-start sidenav_text">Track implementation</p>
@@ -45,7 +54,7 @@ const Homepage = () => {
                         </div>
                         <div className="sidenav_content">
                             <div className="sidenav_container center_div">
-                                <HelpOutlineIcon/>
+                                <HelpOutlineIcon />
                             </div>
                             <div>
                                 <p className="heavy_head align-start sidenav_text">Help</p>
@@ -53,7 +62,7 @@ const Homepage = () => {
                         </div>
                         <div className="sidenav_content">
                             <div className="sidenav_container center_div">
-                                <InfoIcon/>
+                                <InfoIcon />
                             </div>
                             <div>
                                 <p className="heavy_head align-start sidenav_text">About</p>
@@ -61,14 +70,14 @@ const Homepage = () => {
                         </div>
                         <div className="sidenav_content">
                             <div className="sidenav_container center_div">
-                                <PowerSettingsNewRoundedIcon/>
+                                <PowerSettingsNewRoundedIcon />
                             </div>
                             <div>
                                 <p className="heavy_head align-start sidenav_text">Log out</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="center_column">
 
                         <div className="grey-bg idea_container">
@@ -83,26 +92,25 @@ const Homepage = () => {
 
                                 <p className="font_heavy">4</p>
 
-                                <p className="font_heavy green_wrap"> + Add idea</p>
-
+                                <p className="font_heavy green_wrap pointer_cursor" onClick={open} > + Add idea</p>
                             </div>
                         </div>
 
                         <div className="grey-bg idea_container">
-                            <div className="green_bg">
-                                <p className="idea_text">Transaction notifications delay for mobile money fund transfers</p>
-                            </div>
-                            <div className="controls_container">
-
-                                <p className="font_heavy ">Mon Nov 19 15:23</p>
-  
-                                <p className="font_heavy green_wrap">Expand thread</p>
-
-                                <p className="font_heavy">4</p>
-
-                                <p className="font_heavy green_wrap"> + Add idea</p>
-                            </div>
+                        <div className="green_bg">
+                            <p className="idea_text">Transaction notifications delay for mobile money fund transfers</p>
                         </div>
+                        <div className="controls_container">
+
+                            <p className="font_heavy ">Mon Nov 19 15:23</p>
+
+                            <p className="font_heavy green_wrap">Expand thread</p>
+
+                            <p className="font_heavy">4</p>
+
+                            <p className="font_heavy green_wrap pointer_cursor" onClick={open} > + Add idea</p>
+                        </div>
+                    </div>
 
 
                     </div>
@@ -110,10 +118,10 @@ const Homepage = () => {
                     <div className="profile_column">
                         <div className="profile_card column">
                             <div className="center">
-                                <img src="https://chingizpro.github.io/portfolio/img/person.png" className="avatar_image"/>
+                                <img src="https://chingizpro.github.io/portfolio/img/person.png" className="avatar_image" />
                             </div>
                             <div className="center">
-                                <p className="faint-text">John Doe</p> <br/>
+                                <p className="faint-text">John Doe</p> <br />
                             </div>
 
                             <div className="center text_below">
@@ -121,7 +129,7 @@ const Homepage = () => {
                             </div>
 
                             <div className="center">
-                                <hr className="line-style"/>
+                                <hr className="line-style" />
                             </div>
 
                             <div className="center text_below">
@@ -157,8 +165,31 @@ const Homepage = () => {
 
                         </div>
                     </div>
-                    </div>
+                </div>
             </section>
+
+            <div>
+                <Modal className='grey-bg' opened={opened} onClose={close} size={700} title="What can be done...?" centered>
+                    <div>
+                        <textarea rows={10} className='text_area'></textarea>
+                    </div>
+                    <div className='send_item'>
+                        <SendRoundedIcon />
+                    </div>
+                </Modal>
+            </div>
+
+            <div>
+                <Modal className='grey-bg' challenge={challenge} onClose={close} size={700} title="What can be done...?" centered>
+                    <div>
+                        <textarea rows={10} className='text_area'></textarea>
+                    </div>
+                    <div className='send_item'>
+                        <SendRoundedIcon />
+                    </div>
+                </Modal>
+            </div>
+
         </div>
     )
 }

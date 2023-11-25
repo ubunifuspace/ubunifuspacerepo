@@ -45,11 +45,15 @@ body {
 
 .hamburger_menu{
     display: none;
+    
 }
 
 @media screen and (max-width: 600px) {
     .hamburger_menu{
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
         padding: 0.8rem;
     }
 }
@@ -126,6 +130,7 @@ body {
     font-size: 1rem;
     display: flex;
     align-content: start;
+    cursor: pointer;
 }
 
 .profile_column{
@@ -195,7 +200,7 @@ body {
     border-radius: 20px;
     background-color: #BEE9AF;
     margin: 1rem;
-    padding: 0.3rem;
+    padding: 0.1rem;
 }
 
 .grey-bg{
@@ -253,7 +258,7 @@ body {
 
 .idea_text{
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     padding: 0 1.2rem;
 }
 
@@ -281,4 +286,18 @@ body {
 .align_start{
     display: flex;
     align-items: flex-start;
+}
+
+.pointer_cursor{
+    cursor: pointer;
+}
+
+.text_area{
+    width: 100%;
+}
+.send_item{
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    justify-content: flex-end;
 }
