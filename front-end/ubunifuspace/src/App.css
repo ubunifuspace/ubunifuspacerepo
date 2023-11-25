@@ -20,7 +20,7 @@ body {
 
 .title{
     margin: 1rem;
-    font-size: 50px;
+    font-size: 36px;
     font-weight: 800;
     color: #14E814;
     padding-left: 2rem;
@@ -64,6 +64,8 @@ body {
     background-color: #D9D9D9;
     margin: 1rem;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Media query for screens with a maximum width of 600 pixels */
@@ -76,7 +78,7 @@ body {
 
 
 .main_content{
-    margin-top: 7rem;
+    margin-top: 5rem;
 }
 
 .side_navigation{
@@ -96,7 +98,7 @@ body {
 
 .heavy_head{
     font-weight: 800;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 1rem;
     margin: 0;
 }
@@ -121,7 +123,9 @@ body {
 }
 
 .sidenav_text{
-    font-size: 1.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-content: start;
 }
 
 .profile_column{
@@ -197,7 +201,7 @@ body {
 .grey-bg{
     background-color: #D9D9D9;
     border-radius: 20px;
-    padding: 1rem;
+    padding: 0.2rem;
 }
 
 
@@ -255,6 +259,7 @@ body {
 
 .font_heavy{
     font-weight: 800;
+    padding: 0;
 }
 
 .green_wrap{
@@ -264,4 +269,16 @@ body {
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.center_div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.align_start{
+    display: flex;
+    align-items: flex-start;
 }

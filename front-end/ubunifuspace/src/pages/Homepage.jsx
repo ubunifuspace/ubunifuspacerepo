@@ -1,4 +1,9 @@
 import React from 'react'
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import InfoIcon from '@mui/icons-material/Info';
+import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRounded';
 
 const Homepage = () => {
     return (
@@ -16,20 +21,54 @@ const Homepage = () => {
 
             <section>
                 <div className="main_content">
+
+
                     <div className="side_navigation">
                         <div className="center">
                             <p className="heavy_head">Menu</p>
                         </div>
                         <div className="sidenav_content">
-                            <div className="sidenav_container">
-                                <img src="" className="sidenav_icon"/>
+                            <div className="sidenav_container center_div">
+                                <PostAddIcon />
                             </div>
-                            <div>
+                            <div className='align_start'>
                                 <p className="heavy_head align-start sidenav_text">Submit challenge</p>
                             </div>
                         </div>
-
+                        <div className="sidenav_content">
+                            <div className="sidenav_container center_div">
+                                <ShowChartIcon/>
+                            </div>
+                            <div className='align_start'>
+                                <p className="heavy_head align-start sidenav_text">Track implementation</p>
+                            </div>
+                        </div>
+                        <div className="sidenav_content">
+                            <div className="sidenav_container center_div">
+                                <HelpOutlineIcon/>
+                            </div>
+                            <div>
+                                <p className="heavy_head align-start sidenav_text">Help</p>
+                            </div>
+                        </div>
+                        <div className="sidenav_content">
+                            <div className="sidenav_container center_div">
+                                <InfoIcon/>
+                            </div>
+                            <div>
+                                <p className="heavy_head align-start sidenav_text">About</p>
+                            </div>
+                        </div>
+                        <div className="sidenav_content">
+                            <div className="sidenav_container center_div">
+                                <PowerSettingsNewRoundedIcon/>
+                            </div>
+                            <div>
+                                <p className="heavy_head align-start sidenav_text">Log out</p>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div className="center_column">
 
                         <div className="grey-bg idea_container">
@@ -56,11 +95,8 @@ const Homepage = () => {
                             <div className="controls_container">
 
                                 <p className="font_heavy ">Mon Nov 19 15:23</p>
-
-
-                                
+  
                                 <p className="font_heavy green_wrap">Expand thread</p>
-
 
                                 <p className="font_heavy">4</p>
 
@@ -118,9 +154,6 @@ const Homepage = () => {
                                     <p className="stat_number">4</p>
                                 </div>
                             </div>
-
-
-
 
                         </div>
                     </div>
