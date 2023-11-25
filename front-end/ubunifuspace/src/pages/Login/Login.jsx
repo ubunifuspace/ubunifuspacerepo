@@ -18,6 +18,40 @@ const Login = () => {
   const handleSubmit = (event)=>{
     event.preventDefault();
     console.log(inputs)
+
+    const body = {
+      email: inputs.identity,
+      password: inputs.password,
+    }
+
+    console.log(body);
+
+    // try {
+    //   const response = await fetch('https://churchisbackend.onrender.com/login', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(body),
+    //   });
+
+    //   const data = await response.json();
+
+    //   if (data.status === 'ok') {
+
+    //     localStorage.setItem('token', data.user);
+    //     localStorage.setItem('userdata', JSON.stringify(data.userdata));
+    //     window.location.href = '/dashboard'
+
+    //   } else {
+    //     alert(`Failed to login: ${data.message}`);
+    //   }
+    // } catch (error) {
+    //   console.error('An error occurred', error);
+    //   // Handle network or other errors here
+    // }
+
+
   }
 
 

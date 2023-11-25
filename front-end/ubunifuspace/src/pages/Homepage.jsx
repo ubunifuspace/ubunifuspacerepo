@@ -4,7 +4,8 @@ import { Modal, Button } from '@mantine/core';
 import { red } from '@mui/material/colors';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { Sidebar } from '../components';
+import { IdeaCard, Sidebar } from '../components';
+
 
 const Homepage = () => {
 
@@ -31,37 +32,8 @@ const Homepage = () => {
 
                     <div className="center_column">
 
-                        <div className="grey-bg idea_container">
-                            <div className="green_bg">
-                                <p className="idea_text">Transaction notifications delay for mobile money fund transfers</p>
-                            </div>
-                            <div className="controls_container">
-
-                                <p className="font_heavy ">Mon Nov 19 15:23</p>
-
-                                <p className="font_heavy green_wrap">Expand thread</p>
-
-                                <p className="font_heavy">4</p>
-
-                                <p className="font_heavy green_wrap pointer_cursor" onClick={open} > + Add idea</p>
-                            </div>
-                        </div>
-
-                        <div className="grey-bg idea_container">
-                        <div className="green_bg">
-                            <p className="idea_text">Transaction notifications delay for mobile money fund transfers</p>
-                        </div>
-                        <div className="controls_container">
-
-                            <p className="font_heavy ">Mon Nov 19 15:23</p>
-
-                            <p className="font_heavy green_wrap">Expand thread</p>
-
-                            <p className="font_heavy">4</p>
-
-                            <p className="font_heavy green_wrap pointer_cursor" onClick={open} > + Add idea</p>
-                        </div>
-                    </div>
+                    <IdeaCard />
+                    <IdeaCard />
 
 
                     </div>
