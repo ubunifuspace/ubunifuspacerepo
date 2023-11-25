@@ -5,34 +5,51 @@
 }
 
 
-#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10rem;
-    background-color: #8CCB8C;
-}
-
-#logo{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#logo img{
-    margin: 1rem;
-    width: 300px;
-    height: 300px;
-}
-
-#innovation_Icon{
+#SignIn_container{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background-color: #8CCB8C;
+}
+
+
+#signIn_logo{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(home-pic.jpg);
+    background-position: center;
+    border-radius: 20px 0px 0px 20px;
+    background-size: cover;
+    margin-left: 4rem;
+}
+
+#signIn_logo img{
+    margin: 1rem;
+    width: 380px;
+    height: 380px;
+ 
+}
+
+#signIn_Components{
+    display: flex;
+    flex-direction: row;
+}
+
+#signIn_Input_Components{
+    width: 50%;
+    border-radius: 0px 20px 20px 0px;
+    margin-right: 4rem;
+    background-color: #BEE9AF;
     
+}
+
+#top_Icon_SignInPage{
+    display: flex;
+    flex-direction: row;
 }
 
 /* #innovation_Icon img{
@@ -43,48 +60,42 @@
     
 } */
 
-#welcome_Note h1{
-    margin-left: 8rem;
-    font-weight: 800;
-    font-size: 55px;
+#welcome_Note_SignIn_Page{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+#welcome_Note_SignIn_Page img{
+    width: 190px;
+    height: 202px;
+}
+
+#welcome_Note_SignIn_Page h1{
+   
+    
     color: #ffffff;
 }
 
 #ubunifu_Space{
     align-items: end;
-    margin-left: 8rem;
+    margin-left: .25rem;
     font-weight: 800;
     font-size: 55px;
     color: #ffffff;
 }
 
-h1{
-    text-align: left;
-    color:white;
-}
-
-
-
-#form-container{
-    height: 100vh;
+#form-SignIn-container{
+    height: auto;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to left, #12971263, #1D8D1D2B);
+  
     padding: 20px;
-    margin: 20px;
+
     border-radius: 12px;
-    width: 40%;
+    width: 100%;
 }
 
-form{
-    
-    width: 100%;
-    
-   
-    
-    
-    
-}
 
 .formGroup{
     display: flex;
@@ -94,8 +105,7 @@ form{
     padding: 20px;
 }
 
-.formLabel{
-    color: white;
+.Input_formLabel{
     font-size: medium;
     font-weight: bold;
     display: flex;
@@ -119,17 +129,21 @@ form{
     text-decoration: none;
     font-weight: bold;
     text-align: end;
+    margin-right: 2rem;
+    cursor: pointer;
 }
 
-#new-here{
-    color: white;
+#new-here p{
+    color: rgb(0, 0, 0);
     text-align: end;
+    font-weight: bold;
 }
 
 #signUp_link{
     color: blue;
     text-decoration: none;
     font-weight: bold;
+    margin-right: 2rem;
 }
 
 .signIn_Button_Container{
@@ -146,26 +160,40 @@ form{
     border-radius: 10px;
     font-size: medium;
     font-weight: bold;
-    background-color: #D9D9D9;
+    color: white;
+    background-color: #0FD00F;
 }
 
 @media screen and (max-width: 768px){
-    #innovation_Icon{
+
+    #ubunifu_Space{
+        align-items: end;
+        margin-left: .25rem;
+        font-weight: 400;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    #welcome_Note_SignIn_Page img{
+        width: 100px;
+        height: 100px;
+    }
+
+    #innovation_Icon_SignInPage{
         display: none;
     }
 
-    #container{
+    #SignIn_container{
         
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    #form-container{
+    #form-SignIn-container{
         height: 100vh;
         justify-content: center;
         align-items: center;
-        background-image: linear-gradient(to left, #08AC08, #08AC08);
         padding: 10px;
         margin: 10px;
         border-radius: 12px;
@@ -177,24 +205,36 @@ form{
 
 @media screen and (max-width: 480px) {
 
-    #container{
+    #ubunifu_Space{
+        align-items: end;
+        margin-left: .25rem;
+        font-weight: 200;
+        font-size: 12px;
+        color: #ffffff;
+    }
+
+    #welcome_Note_SignIn_Page img{
+        width: 100px;
+        height: 100px;
+    }
+
+    #SignIn_container{
         margin-top: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    #form-container{
+    #form-SignIn-container{
         
         height: auto;
         justify-content: center;
         align-items: center;
-        background-image: linear-gradient(to left, #08AC08, #08AC08);
         border-radius: 12px;
         width: 100%;
     }
 
-    #logo img{
+    #signIn_logo img{
         margin: 1rem;
         width: 100px;
         height: 100px;
