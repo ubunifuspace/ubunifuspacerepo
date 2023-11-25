@@ -110,6 +110,22 @@ app.post('/register', async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Helper function for database queries
 function queryDatabase(sql, values) {
     return new Promise((resolve, reject) => {

@@ -11,7 +11,13 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 
 
 const Sidebar = () => {
+
     const [opened, { open, close }] = useDisclosure(false);
+
+    function logout() {
+        localStorage.removeItem('userdata');
+        window.location.href = '/';
+      }
 
     return (
         <>
@@ -49,15 +55,15 @@ const Sidebar = () => {
                             <InfoIcon />
                         </div>
                         <div>
-                            <p className="heavy_head align-start sidenav_text">About</p>
+                            <p className="heavy_head align-start sidenav_text" >About</p>
                         </div>
                     </div>
                     <div className="sidenav_content">
                         <div className="sidenav_container center_div">
-                            <PowerSettingsNewRoundedIcon />
+                            <PowerSettingsNewRoundedIcon style={{color: 'red'}} />
                         </div>
                         <div>
-                            <p className="heavy_head align-start sidenav_text">Log out</p>
+                            <p className="heavy_head align-start sidenav_text" onClick={logout}>Log out</p>
                         </div>
                     </div>
                 </div>

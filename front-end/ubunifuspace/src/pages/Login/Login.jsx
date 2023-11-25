@@ -1,56 +1,56 @@
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const Login = () => {
 
   const [inputs, setInputs] = useState({});
   const navigate = useNavigate();
 
-  const handleChange =(event) => {
+  const handleChange = (event) => {
 
     const name = event.target.name;
     const value = event.target.value;
-    setInputs(values =>({...values, [name]: value}));
+    setInputs(values => ({ ...values, [name]: value }));
 
   }
 
-  const handleSubmit = (event)=>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs)
+
 
     const body = {
-      email: inputs.identity,
+      staffid: inputs.identity,
       password: inputs.password,
     }
 
     console.log(body);
 
-    // try {
-    //   const response = await fetch('https://churchisbackend.onrender.com/login', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(body),
-    //   });
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
 
-    //   const data = await response.json();
+      const data = await response.json();
 
-    //   if (data.status === 'ok') {
+      console.log(data);
 
-    //     localStorage.setItem('token', data.user);
-    //     localStorage.setItem('userdata', JSON.stringify(data.userdata));
-    //     window.location.href = '/dashboard'
+      if (data.success) {
+        console.log(data.user);
+        localStorage.setItem('userdata', JSON.stringify(data.user));
+        window.location.href = '/home'
 
-    //   } else {
-    //     alert(`Failed to login: ${data.message}`);
-    //   }
-    // } catch (error) {
-    //   console.error('An error occurred', error);
-    //   // Handle network or other errors here
-    // }
-
+      } else {
+        alert(`Failed to login: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('An error occurred', error);
+      // Handle network or other errors here
+    }
 
   }
 
@@ -62,7 +62,7 @@ const Login = () => {
         <div id="welcome_Note_SignIn_Page">
 
           <img src="./idea.png" alt="innovation_Space_logo" />
-        
+
           <h1>
             Welcome to <br></br> <span id="ubunifu_Space">UbunifuSpace</span>
           </h1>
@@ -72,7 +72,7 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div id="signIn_Components">
             <div id="signIn_logo">
-        
+
             </div>
 
             <div id="signIn_Input_Components">

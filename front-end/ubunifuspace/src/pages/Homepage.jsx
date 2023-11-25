@@ -16,7 +16,7 @@ const Homepage = () => {
             <header>
                 <nav className="navbar" >
                     <div>
-                        <p className="title">Ubunifu space</p>
+                        <p className="title animate__animated animate__pulse">Ubunifu space</p>
                     </div>
                     <div className="hamburger_menu">
                         <MenuRoundedIcon />
@@ -91,16 +91,7 @@ const Homepage = () => {
                 </div>
             </section>
 
-            <div>
-                <Modal className='grey-bg' opened={opened} onClose={close} size={700} title="What can be done...?" centered>
-                    <div>
-                        <textarea rows={10} className='text_area'></textarea>
-                    </div>
-                    <div className='send_item'>
-                        <SendRoundedIcon />
-                    </div>
-                </Modal>
-            </div>
+            
 
         
 
