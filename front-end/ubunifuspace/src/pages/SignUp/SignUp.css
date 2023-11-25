@@ -5,15 +5,12 @@
 
 }
 
-body{
-    background-color: #8CCB8C;
-}
-
 #container{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    background-color: #8CCB8C;
 }
 
 #innovation_Icon{
@@ -124,6 +121,7 @@ form h1{
     border-radius: 10px;
     font-size: medium;
     font-weight: bold;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px){
