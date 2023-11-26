@@ -1,6 +1,8 @@
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -17,7 +19,6 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
 
     const body = {
       staffid: inputs.identity,
@@ -45,10 +46,10 @@ const Login = () => {
         window.location.href = '/home'
 
       } else {
-        alert(`Failed to login: ${data.message}`);
+       toast.error(`Failed to login: ${data.message}`);
       }
     } catch (error) {
-      console.error('An error occurred', error);
+      toast.error('An error occurred', error);
       // Handle network or other errors here
     }
 
@@ -123,6 +124,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
