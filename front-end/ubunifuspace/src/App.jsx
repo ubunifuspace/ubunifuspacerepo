@@ -2,8 +2,10 @@ import React from 'react'
 import { Homepage, Login, SignUp } from './pages'
 import './app.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Notifications } from '@mantine/notifications';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <MantineProvider>
+      <Notifications />
       <RouterProvider router={router} />
     </MantineProvider>
   )

@@ -214,6 +214,7 @@ body {
     background-color: #BEE9AF;
     margin: 0.5rem;
     padding: 0.1rem;
+    border: 2px solid #14E814;
 }
 
 .grey-bg{
@@ -283,6 +284,7 @@ body {
 
 .green_wrap{
     background-color: #BEE9AF;
+    border: 0.5px solid #14E814;
     padding: 10px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -340,7 +342,7 @@ body {
 
 .solution_card{
     width: 80%;
-    border: 2px solid #000000;
+    /* border: 0.5px solid #8c8f8e; */
     border-radius: 20px;
     margin: 0.1rem 0 ;
     z-index: -1000;
@@ -368,4 +370,13 @@ body {
 
 .hide{
     display: none;
+}
+
+.selected{
+    background-color: #BEE9AF;
+}
+
+.success-notification{
+    background-color: #14E814;
+    color: white;
 }

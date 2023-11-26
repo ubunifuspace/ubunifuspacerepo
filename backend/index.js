@@ -40,7 +40,7 @@ app.post('/user', (req, res) => {
     res.send('Ubunifu space Backend ');
 });
 
-// get 
+
 
 
 
@@ -108,6 +108,119 @@ app.post('/register', async (req, res) => {
         });
     }
 });
+
+
+// PROBLEMS APIS
+app.post('/create-problem', async (req, res) => {
+    try {
+        const { user_id, title, description, department } = req.body;
+
+        // Proceed with problem creation
+        const results = await queryDatabase(
+            'INSERT INTO problem (user_id, title, description, department) VALUES (?, ?, ?, ?)',
+            [user_id, title, description, department]
+        );
+
+        res.status(201).json({
+            success: true,
+            message: 'Problem created successfully',
+            problemId: results, // The ID of the newly inserted problem
+        });
+    } catch (error) {
+        console.error('Error in creating problem', error);
+        res.status(500).json({
+            error: true,
+            message: 'Error on the server side during problem creation',
+        });
+    }
+});
+
+
+
+app.get('/problems', async (req, res) => {
+    try {
+        // Fetch all problems with their associated ideas using a JOIN query
+        const results = await queryDatabase(`
+            SELECT p.*, i.*
+            FROM problem p
+            LEFT JOIN idea i ON p.problem_id = i.problem_id
+        `);
+
+        // Organize the data into a suitable structure
+        const problemsWithIdeas = results.reduce((acc, row) => {
+            const problemId = row.problem_id;
+
+            if (!acc[problemId]) {
+                // Create an entry for the problem if it doesn't exist
+                acc[problemId] = {
+                    problem: {
+                        problem_id: row.problem_id,
+                        user_id: row.user_id,
+                        title: row.title,
+                        description: row.description,
+                        department: row.department
+                    },
+                    ideas: [],
+                };
+            }
+
+            // Add the idea to the associated problem
+            if (row.idea_id) {
+                acc[problemId].ideas.push({
+                    idea_id: row.idea_id,
+                    user_id: row.user_id,
+                    description: row.description
+                });
+            }
+
+            return acc;
+        }, {});
+
+        // Convert the object to an array
+        const problemsWithIdeasArray = Object.values(problemsWithIdeas);
+
+        res.status(200).json({
+            success: true,
+            problemsWithIdeas: problemsWithIdeasArray,
+        });
+    } catch (error) {
+        console.error('Error in fetching problems with ideas', error);
+        res.status(500).json({
+            error: true,
+            message: 'Error on the server side during data retrieval',
+        });
+    }
+});
+
+
+
+// IDEAS ENDPOINTS
+app.post('/create-idea', async (req, res) => {
+    try {
+        const { problem_id, user_id, description } = req.body;
+
+        // Insert the idea into the database
+        const results = await queryDatabase(
+            'INSERT INTO idea (problem_id, user_id, description) VALUES (?, ?, ?)',
+            [problem_id, user_id, description]
+        );
+
+        res.status(201).json({
+            success: true,
+            message: 'Idea created successfully',
+            ideaId: results.insertId, // The ID of the newly inserted idea
+        });
+    } catch (error) {
+        console.error('Error in creating idea', error);
+        res.status(500).json({
+            error: true,
+            message: 'Error on the server side during idea creation',
+        });
+    }
+});
+
+
+
 
 
 
