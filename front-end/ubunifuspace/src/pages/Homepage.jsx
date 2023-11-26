@@ -10,7 +10,12 @@ import { IdeaCard, Sidebar } from '../components';
 const Homepage = () => {
 
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState('')
+    const [loading, setLoading] = useState('');
+
+    const userdata = localStorage.getItem('userdata');
+    const parsedData = JSON.parse(userdata);
+
+    console.log(parsedData);
 
 
     useEffect(() => {
@@ -67,7 +72,7 @@ const Homepage = () => {
 
                     <div className="center_column">
 
-                        <IdeaCard />
+                        <IdeaCard data={data} />
 
 
                     </div>
@@ -77,12 +82,9 @@ const Homepage = () => {
                             <div className="center">
                                 <img src="https://chingizpro.github.io/portfolio/img/person.png" className="avatar_image" />
                             </div>
-                            <div className="center">
-                                <p className="faint-text">John Doe</p> <br />
-                            </div>
-
-                            <div className="center text_below">
-                                <p className="bolder-text">Marketing Department</p>
+                            <div className="center flex-column">
+                                <p className="faint-text no-spacing">{parsedData?.name}</p> <br />
+                                <p className="bolder-text">{parsedData?.email}</p>
                             </div>
 
                             <div className="center">

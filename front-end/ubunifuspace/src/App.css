@@ -388,3 +388,19 @@ body {
     background-color: #14E814;
     color: white;
 }
+
+.flex-column{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+
+}
+
+.no-spacing {
+    padding: 0 !important;
+    margin: 0 !important;
+}

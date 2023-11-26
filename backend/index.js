@@ -138,55 +138,34 @@ app.post('/create-problem', async (req, res) => {
 
 
 app.get('/problems', async (req, res) => {
-
-
-
     try {
-        // Fetch all problems with their associated ideas using a JOIN query
-        const results = await queryDatabase(`
-            SELECT p.*, i.*
-            FROM problem p
-            LEFT JOIN idea i ON p.id = i.problem_id
-        `);
+        // Fetch all problems
+        const problemsResults = await queryDatabase('SELECT * FROM problem');
 
-        console.log(results);
+        // Fetch all ideas
+        const ideasResults = await queryDatabase('SELECT * FROM idea');
 
         // Organize the data into a suitable structure
-        const problemsWithIdeas = results.reduce((acc, row) => {
-            const problemId = row.problem_id;
-
-            if (!acc[problemId]) {
-                // Create an entry for the problem if it doesn't exist
-                acc[problemId] = {
-                    problem: {
-                        problem_id: row.problem_id,
-                        user_id: row.user_id,
-                        title: row.title,
-                        description: row.description,
-                        department: row.department
-                    },
-                    ideas: [],
-                };
-            }
-
-            // Add the idea to the associated problem
-            if (row.id) {
-                acc[problemId].ideas.push({
-                    idea_id: row.id,
-                    user_id: row.user_id,
-                    description: row.description
-                });
-            }
-
-            return acc;
-        }, {});
-
-        // Convert the object to an array
-        const problemsWithIdeasArray = Object.values(problemsWithIdeas);
+        const problemsWithIdeas = problemsResults.map(problem => {
+            return {
+                problem: {
+                    problem_id: problem.id,
+                    user_id: problem.user_id,
+                    title: problem.title,
+                    description: problem.description,
+                    department: problem.department
+                },
+                ideas: ideasResults.filter(idea => idea.problem_id === problem.id).map(idea => ({
+                    idea_id: idea.id,
+                    user_id: idea.user_id,
+                    description: idea.description
+                })),
+            };
+        });
 
         res.status(200).json({
             success: true,
-            problemsWithIdeas: problemsWithIdeasArray,
+            problemsWithIdeas: problemsWithIdeas,
         });
     } catch (error) {
         console.error('Error in fetching problems with ideas', error);
@@ -196,6 +175,7 @@ app.get('/problems', async (req, res) => {
         });
     }
 });
+
 
 
 
