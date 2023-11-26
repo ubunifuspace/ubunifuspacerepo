@@ -12,7 +12,7 @@ import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlin
 import { notifications } from '@mantine/notifications';
 import ControlContainer from './ControlContainer';
 
-const IdeaCard = () => {
+const IdeaCard = ({data}) => {
 
     const [opened, { open, close }] = useDisclosure(false);
     const [showContent, setShowContent] = useState(false);
@@ -96,50 +96,7 @@ const IdeaCard = () => {
         }
     }
 
-    const data = [
-        {
-            "problem": {
-                "problem_id": 3,
-                "user_id": 3,
-                "title": "Network instability",
-                "description": "we can send a backup network lnk for you the arusha branch to use, to cover during unstable network times",
-                "department": "IT department"
-            },
-            "ideas": [
-                {
-                    "idea_id": 3,
-                    "user_id": 3,
-                    "description": "we can send a backup network lnk for you the arusha branch to use, to cover during unstable network times"
-                },
-                {
-                    "idea_id": 4,
-                    "user_id": 3,
-                    "description": "we can buy a starLink router it offers great connectivity regardless of your physical location"
-                },
-                {
-                    "idea_id": 5,
-                    "user_id": 3,
-                    "description": "Hello naomba hella yangu"
-                },
-                {
-                    "idea_id": 6,
-                    "user_id": 3,
-                    "description": "maokoto zombi sikutaji humu"
-                }
-            ]
-        },
-        {
-            "problem": {
-                "problem_id": null,
-                "user_id": null,
-                "title": "Poor sales in Mafinga ",
-                "description": null,
-                "department": "Sales department"
-            },
-            "ideas": []
-        }
-    ]
-
+    
 
     return (
         <div>
@@ -170,7 +127,7 @@ const IdeaCard = () => {
                         </p>
                         <div className="align-start position_center">
                             <WbIncandescentOutlinedIcon rotate={1} />
-                            <p className="font_heavy position_center">4</p>
+                            <p className="font_heavy position_center">{problem.ideas.length}</p>
                         </div>
                         <p className="font_heavy green_wrap pointer_cursor" onClick={open}>
                             + Add idea
@@ -184,7 +141,7 @@ const IdeaCard = () => {
                     <div>
                         <textarea rows={10} className="text_area"></textarea>
                     </div>
-                    <div className="send_item">
+                    <div className="send_item pointer-cursor" onClick={handleSubmitIdea}>
                         <SendRoundedIcon />
                     </div>
                 </Modal>
