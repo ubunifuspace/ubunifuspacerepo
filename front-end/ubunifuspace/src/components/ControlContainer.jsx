@@ -34,6 +34,10 @@ const ControlContainer = ({idea}) => {
         }, 1000);
     };
 
+    const randomNumber = Math.floor(Math.random() * 1000) + 1;
+    const commentsNumber = Math.floor(Math.random() * 100) + 1;
+    const randomDecimal = (Math.floor(Math.random() * 31) + 20) / 10;
+
 
     const toggleContent = () => {
         setShowContent(!showContent);
@@ -44,7 +48,7 @@ const ControlContainer = ({idea}) => {
             <p className="font_heavy">Mon Nov 19 15:23</p>
             <div className="align-start position_center">
                 <StarHalfRoundedIcon />
-                <p className="font_heavy">4.2</p>
+                <p className="font_heavy">{randomDecimal}</p>
             </div>
             <div className='align-start position_center' onClick={() => {
                 handleFavoriteClick()
@@ -59,11 +63,11 @@ const ControlContainer = ({idea}) => {
                 ) : (
                     <FavoriteBorderIcon />
                 )}
-                <p className="font_heavy" >251</p>
+                <p className="font_heavy" >{randomNumber}</p>
             </div>
             <div className="align-start position_center">
                 <CommentRoundedIcon />
-                <p className="font_heavy">6</p>
+                <p className="font_heavy">{commentsNumber}</p>
             </div>
             <div className="position_center">
                 <DeleteRoundedIcon style={{ color: 'red' }} />

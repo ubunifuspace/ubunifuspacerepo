@@ -127,7 +127,7 @@ const IdeaCard = ({data}) => {
                         </p>
                         <div className="align-start position_center">
                             <WbIncandescentOutlinedIcon rotate={1} />
-                            <p className="font_heavy position_center">4</p>
+                            <p className="font_heavy position_center">{problem.ideas.length}</p>
                         </div>
                         <p className="font_heavy green_wrap pointer_cursor" onClick={open}>
                             + Add idea
