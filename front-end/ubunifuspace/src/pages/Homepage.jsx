@@ -1,13 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import { red } from '@mui/material/colors';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { IdeaCard, Sidebar } from '../components';
-
-
-
 
 
 const Homepage = () => {
@@ -26,11 +23,11 @@ const Homepage = () => {
                         'Content-Type': 'application/json',
                     },
                 });
-        
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-        
+
                 const responseData = await response.json();
                 setData(responseData?.problemsWithIdeas);
                 console.log(responseData?.problemsWithIdeas);
@@ -40,14 +37,14 @@ const Homepage = () => {
                 setLoading(false);
             }
         };
-        
-    
+
+
         fetchData();
-      }, []);
+    }, []);
 
-    
 
-    const [ opened, { open, close }] = useDisclosure(false);
+
+    const [opened, { open, close }] = useDisclosure(false);
 
     return (
         <div id="homepage_dashboard">
@@ -70,8 +67,7 @@ const Homepage = () => {
 
                     <div className="center_column">
 
-                    <IdeaCard />
-                    <IdeaCard />
+                        <IdeaCard />
 
 
                     </div>
@@ -128,10 +124,6 @@ const Homepage = () => {
                     </div>
                 </div>
             </section>
-
-            
-
-        
 
         </div>
     )

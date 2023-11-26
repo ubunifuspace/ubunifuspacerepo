@@ -10,7 +10,7 @@ import ConfettiExplosion from 'react-confetti-explosion';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlined';
 import { notifications } from '@mantine/notifications';
-
+import ControlContainer from './ControlContainer';
 
 const IdeaCard = () => {
 
@@ -18,6 +18,7 @@ const IdeaCard = () => {
     const [showContent, setShowContent] = useState(false);
     const [isExploding, setIsExploding] = useState(false);
     const [like, setIsLiked] = useState(false);
+    const [likes, setLikes] = useState({});
 
     const [idea, setIdea] = useState('')
 
@@ -25,13 +26,19 @@ const IdeaCard = () => {
         setIdea(e.target.value);
     };
 
-    const handleFavoriteClick = () => {
+    const handleFavoriteClick = (ideaId) => {
         setIsExploding(true);
+
+        // Set like status for the specific idea
+        setLikes((prevLikes) => ({
+            ...prevLikes,
+            [ideaId]: !prevLikes[ideaId],
+        }));
 
         // Reset isExploding state after a delay (e.g., 1000 milliseconds)
         setTimeout(() => {
             setIsExploding(false);
-        }, 100000);
+        }, 1000);
     };
 
 
@@ -76,8 +83,6 @@ const IdeaCard = () => {
                     className: 'success-notification'
                 })
 
-                //Great work dude 🔥🔥🔥, @Jay Ara
-
             } else {
                 setIdea('')
                 notifications.show({
@@ -91,115 +96,104 @@ const IdeaCard = () => {
         }
     }
 
+    const data = [
+        {
+            "problem": {
+                "problem_id": 3,
+                "user_id": 3,
+                "title": "Network instability",
+                "description": "we can send a backup network lnk for you the arusha branch to use, to cover during unstable network times",
+                "department": "IT department"
+            },
+            "ideas": [
+                {
+                    "idea_id": 3,
+                    "user_id": 3,
+                    "description": "we can send a backup network lnk for you the arusha branch to use, to cover during unstable network times"
+                },
+                {
+                    "idea_id": 4,
+                    "user_id": 3,
+                    "description": "we can buy a starLink router it offers great connectivity regardless of your physical location"
+                },
+                {
+                    "idea_id": 5,
+                    "user_id": 3,
+                    "description": "Hello naomba hella yangu"
+                },
+                {
+                    "idea_id": 6,
+                    "user_id": 3,
+                    "description": "maokoto zombi sikutaji humu"
+                }
+            ]
+        },
+        {
+            "problem": {
+                "problem_id": null,
+                "user_id": null,
+                "title": "Poor sales in Mafinga ",
+                "description": null,
+                "department": "Sales department"
+            },
+            "ideas": []
+        }
+    ]
+
+
     return (
         <div>
-            <div className="grey-bg idea_container">
-                <div className="green_bg">
-                    <p className="idea_text">Transaction notifications delay for mobile money fund transfers</p>
-                </div>
+            {data.map((problem) => (
+                <div key={problem.problem.problem_id} className="grey-bg idea_container">
+                    <div className="green_bg">
+                        <p className="idea_title">{problem.problem.title}</p>
+                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.problem.description}</p>
+                    </div>
 
+                    {problem.ideas.map((idea) => (
+                        <div key={idea.idea_id} className={`center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
+                            <div className="solution_card">
+                                <div className="solution_text_container">
+                                    <p>{idea.description}</p>
+                                </div>
 
-
-                <div className={`center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
-                    <div className='solution_card'>
-
-                        <div className='solution_text_container'>
-                            <p>Add email notifications for mobile money transfers</p>
-                        </div>
-
-                        <div className='controls_container'>
-                            <p className="font_heavy">Mon Nov 19 15:23</p>
-                            <div className='align-start position_center'>
-                                <StarHalfRoundedIcon />
-                                <p className="font_heavy">4.2</p>
-                            </div>
-                            <div className='align-start position_center' onClick={() => {
-                                handleFavoriteClick()
-                                setIsLiked(true);
-                            }
-                            }>
-                                <>{isExploding && <ConfettiExplosion force={0.1} duration={2200} />}</>
-                                {like ? <FavoriteRoundedIcon style={{ color: '#fc033d' }} /> : <FavoriteBorderIcon />}
-                                <p className="font_heavy" >251</p>
-                            </div>
-                            <div className='align-start position_center'>
-                                <CommentRoundedIcon />
-                                <p className="font_heavy">6</p>
-                            </div>
-                            <div className='position_center'>
-                                <DeleteRoundedIcon style={{ color: 'red' }} />
+                                <ControlContainer idea={idea} />
+                                
                             </div>
                         </div>
+                    ))}
 
+                    <div className="controls_container">
+                        <p className="font_heavy position_center">Mon Nov 19 15:23</p>
+                        <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>
+                            {showContent ? 'Collapse' : 'Expand'} content
+                        </p>
+                        <div className="align-start position_center">
+                            <WbIncandescentOutlinedIcon rotate={1} />
+                            <p className="font_heavy position_center">4</p>
+                        </div>
+                        <p className="font_heavy green_wrap pointer_cursor" onClick={open}>
+                            + Add idea
+                        </p>
                     </div>
                 </div>
-
-                <div className={`center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
-                    <div className='solution_card'>
-
-                        <div className='solution_text_container'>
-                            <p>Add email notifications for mobile money transfers</p>
-                        </div>
-
-                        <div className='controls_container'>
-                            <p className="font_heavy">Mon Nov 19 15:23</p>
-                            <div className='align-start position_center'>
-                                <StarHalfRoundedIcon />
-                                <p className="font_heavy">4.2</p>
-                            </div>
-                            <div className='align-start position_center' onClick={() => {
-                                handleFavoriteClick()
-                                setIsLiked(true);
-                            }
-                            }>
-                                <>{isExploding && <ConfettiExplosion force={0.1} duration={2200} />}</>
-                                {like ? <FavoriteRoundedIcon style={{ color: '#fc033d' }} /> : <FavoriteBorderIcon />}
-                                <p className="font_heavy" >251</p>
-                            </div>
-                            <div className='align-start position_center'>
-                                <CommentRoundedIcon />
-                                <p className="font_heavy">6</p>
-                            </div>
-                            <div className='position_center'>
-                                <DeleteRoundedIcon style={{ color: 'red' }} />
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className="controls_container">
-                    <p className="font_heavy position_center ">Mon Nov 19 15:23</p>
-                    <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>{showContent ? 'Collapse' : 'Expand'} content</p>
-                    <div className='align-start position_center'>
-                        <WbIncandescentOutlinedIcon rotate={1} />
-                        <p className="font_heavy position_center">4</p>
-                    </div>
-                    <p className="font_heavy green_wrap pointer_cursor" onClick={open} > + Add idea</p>
-                </div>
-            </div>
+            ))}
 
             <div>
-                <Modal className='grey-bg' opened={opened} onClose={close} size={700} title="What can be done...?" centered>
+                <Modal className="grey-bg" opened={opened} onClose={close} size={700} title="What can be done...?" centered>
                     <div>
-                        <textarea
-                            rows={10}
-                            className='text_area'
-                            onChange={handleIdeaChange}
-                            value={idea}
-                        ></textarea>
+                        <textarea rows={10} className="text_area"></textarea>
                     </div>
-                    <div className='send_item' onClick={handleSubmitIdea}>
-                        <SendRoundedIcon className='pointer_cursor' />
+                    <div className="send_item">
+                        <SendRoundedIcon />
                     </div>
                 </Modal>
             </div>
-
         </div>
-        //By @Jay Ara
-// //Modified from onClick={toggleContent}>{showContent ? 'Expand' : 'Collapse'} to onClick={toggleContent}>{showContent ? 'Collapse' : 'Expand'}
-
     )
 }
 
 export default IdeaCard
+
+
+
