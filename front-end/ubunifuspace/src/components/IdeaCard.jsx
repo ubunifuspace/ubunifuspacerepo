@@ -60,6 +60,8 @@ const IdeaCard = ({data}) => {
             description: idea,
         }
 
+        
+        console.log(body);
 
         try {
             const response = await fetch('http://localhost:5000/create-idea', {
@@ -139,9 +141,13 @@ const IdeaCard = ({data}) => {
             <div>
                 <Modal className="grey-bg" opened={opened} onClose={close} size={700} title="What can be done...?" centered>
                     <div>
-                        <textarea rows={10} className="text_area"></textarea>
+                        <textarea
+                         rows={10} 
+                         className="text_area"
+                         onChange={handleIdeaChange}
+                         value={idea} ></textarea>
                     </div>
-                    <div className="send_item pointer-cursor" onClick={handleSubmitIdea}>
+                    <div className="send_item pointer_cursor" onClick={handleSubmitIdea}>
                         <SendRoundedIcon />
                     </div>
                 </Modal>
