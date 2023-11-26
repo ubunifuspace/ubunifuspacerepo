@@ -168,11 +168,9 @@ const IdeaCard = () => {
                     </div>
                 </div>
 
-
-
                 <div className="controls_container">
                     <p className="font_heavy position_center ">Mon Nov 19 15:23</p>
-                    <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>{showContent ? 'Expand' : 'Collapse'} content</p>
+                    <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>{showContent ? 'Collapse' : 'Expand'} content</p>
                     <div className='align-start position_center'>
                         <WbIncandescentOutlinedIcon rotate={1} />
                         <p className="font_heavy position_center">4</p>
@@ -198,7 +196,8 @@ const IdeaCard = () => {
             </div>
 
         </div>
-
+        //By @Jay Ara
+// //Modified from onClick={toggleContent}>{showContent ? 'Expand' : 'Collapse'} to onClick={toggleContent}>{showContent ? 'Collapse' : 'Expand'}
 
     )
 }
