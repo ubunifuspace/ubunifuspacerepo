@@ -19,6 +19,8 @@ const SignUp = () => {
 
     const handleSubmit = (event) => {
 
+        event.preventDefault();
+        
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
         if (!inputs.email.match(emailRegex)) {
             toast.error("Invalid email address");
@@ -31,7 +33,7 @@ const SignUp = () => {
             return;
         }
 
-        event.preventDefault();
+        
         setinputs({});
         console.log(inputs);
         toast.success("Data Successifully Received");

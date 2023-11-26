@@ -2,7 +2,10 @@
 *{
     box-sizing: border-box;
     font-family:Mulish;
+}
 
+body{
+    background-color: #8CCB8C;
 }
 
 #container{

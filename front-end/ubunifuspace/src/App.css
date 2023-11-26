@@ -14,10 +14,15 @@ html{
 }
 
 body {
-    background-color: white;
+    background-color: #8CCB8C;
     margin: 0;
     padding: 0;
     font-family: 'Mulish', sans-serif;
+}
+
+#homepage_dashboard{
+    background-color: #8CCB8C;
+    height: 100%;
 }
 
 @media screen and (max-width: 600px) {
@@ -73,7 +78,7 @@ body {
 }
 
 .side_navigation {
-    background-color: #D9D9D9;
+    background-color: #BEE9AF;
     margin: 1rem;
     border-radius: 20px;
     display: flex;
@@ -165,7 +170,7 @@ body {
 }
 
 .profile_card{
-    background-color: #D9D9D9;
+    background-color: white;
     margin: 1rem;
     border-radius: 20px; 
     padding: 1rem;
@@ -213,7 +218,7 @@ body {
 }
 
 .grey-bg{
-    background-color: #D9D9D9;
+    background-color:white;
     border-radius: 20px;
     padding: 0.2rem;
 }
@@ -315,12 +320,16 @@ body {
 
 .department{
     border: 2px solid black;
-    border-top-right-radius: 13px;
-    border-top-left-radius: 13px;
-    border-bottom-left-radius: 13px;
-    border-bottom-right-radius: 13px;
+    border-radius: 13px;
     padding: 1px 5px;
     margin: 5px;
+}
+
+.department:hover{
+    background-color: #BEE9AF;
+    border: none;
+    box-shadow: 5px 2px #8CCB8C;
+    cursor: pointer;
 }
 
 .deaprtment_continer{

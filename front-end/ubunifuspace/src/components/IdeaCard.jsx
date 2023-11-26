@@ -76,6 +76,8 @@ const IdeaCard = () => {
                     className: 'success-notification'
                 })
 
+                //Great work dude 🔥🔥🔥, @Jay Ara
+
             } else {
                 setIdea('')
                 notifications.show({
