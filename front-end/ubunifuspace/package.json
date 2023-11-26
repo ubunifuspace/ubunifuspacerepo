@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@mantine/core": "^7.2.2",
     "@mantine/hooks": "^7.2.2",
+    "@mantine/notifications": "^7.2.2",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
     "localforage": "^1.10.0",

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -7,17 +7,88 @@ import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRou
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import { notifications } from '@mantine/notifications';
 
 
 
 const Sidebar = () => {
 
     const [opened, { open, close }] = useDisclosure(false);
+    const [challenge, setChallenge] = useState('')
+    const [title, setTitle] = useState('')
+    // const [department, setDepartment] = useState('');
+    const [selectedDepartment, setSelectedDepartment] = useState('');
+
+    const handledescriptonChange = (e) => {
+        setChallenge(e.target.value);
+    };
+
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    };
+
+    const handleDepartmentClick = (department) => {
+        setSelectedDepartment(department);
+    };
 
     function logout() {
         localStorage.removeItem('userdata');
         window.location.href = '/';
-      }
+    }
+
+    const userdata = localStorage.getItem('userdata');
+    const parsedData = JSON.parse(userdata);
+
+    console.log(parsedData);
+
+    const handleSubmit = async (e) => {
+
+        const body = {
+            description: challenge,
+            department: selectedDepartment,
+            title: title,
+            user_id: parsedData.id,
+        }
+
+
+        try {
+            const response = await fetch('http://localhost:5000/create-problem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            });
+
+            const data = await response.json();
+
+            console.log(data);
+
+            if (data.success) {
+                setChallenge('')
+                setTitle('')
+                setSelectedDepartment('')
+                notifications.show({
+                    title: 'SUCCESS',
+                    message: 'Successfully created a problem,btw your code is awesome! 🤥',
+                    color: 'green',
+                    className: 'success-notification'
+                })
+                //   window.location.href = '/home'
+
+            } else {
+                //   alert(`Failed to login: ${data.message}`);
+                notifications.show({
+                    color: 'red',
+                    title: 'ERROR',
+                    message: `Failed to login: ${data.message}`,
+                })
+            }
+        } catch (error) {
+            console.error('An error occurred', error);
+            // Handle network or other errors here
+        }
+    }
 
     return (
         <>
@@ -60,7 +131,7 @@ const Sidebar = () => {
                     </div>
                     <div className="sidenav_content">
                         <div className="sidenav_container center_div">
-                            <PowerSettingsNewRoundedIcon style={{color: 'red'}} />
+                            <PowerSettingsNewRoundedIcon style={{ color: 'red' }} />
                         </div>
                         <div>
                             <p className="heavy_head align-start sidenav_text" onClick={logout}>Log out</p>
@@ -71,31 +142,65 @@ const Sidebar = () => {
 
             <div>
                 <Modal className='grey-bg' opened={opened} onClose={close} size={700} title="Challenge details" centered>
-                    <div>
-                        <textarea rows={10} className='text_area'></textarea>
-                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <textarea
+                                rows={2}
+                                placeholder='TITLE'
+                                className='text_area'
+                                value={title}
+                                onChange={handleTitleChange}
+                            ></textarea>
+                        </div>
 
-                    <h5 className='center'>Choose your challenge category</h5>
+                        <div>
+                            <textarea
+                                rows={6}
+                                placeholder='Description'
+                                className='text_area'
+                                value={challenge}
+                                onChange={handledescriptonChange}
+                            ></textarea>
+                        </div>
 
-                    <div className='center deaprtment_continer'>
 
-                        <p className='department'>Marketing</p>
-                        <p className='department'>Information technology</p>
+                        <h5 className='center'>Choose your challenge category</h5>
 
-                        <p className='department'>Sales</p>
+                        <div className='center deaprtment_continer'>
 
-                        <p className='department'>Advertising</p>
+                            <p className={`department ${selectedDepartment === 'Marketing' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Marketing')}>
+                                Marketing
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Information technology' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Information technology')}>
+                                Information technology
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Sales' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Sales')}>
+                                Sales
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Advertising' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Advertising')}>
+                                Advertising
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Administration' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Administration')}>
+                                Administration
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Human resources' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Human resources')}>
+                                Human resources
+                            </p>
+                            <p className={`department ${selectedDepartment === 'Corporate' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('Corporate')}>
+                                Corporate
+                            </p>
+                            <p className={`department ${selectedDepartment === 'operations' ? 'selected' : ''}`} onClick={() => handleDepartmentClick('operations')}>
+                                Operations
+                            </p>
 
-                        <p className='department'>Administration</p>
-                        <p className='department'>Human resources</p>
-                        <p className='department'>Corporate</p>
-                        <p className='department'>operations</p>
+                        </div>
 
-                    </div>
 
-                    <div className='send_item'>
-                        <SendRoundedIcon />
-                    </div>
+                        <div className='send_item ' onClick={handleSubmit} >
+                            <SendRoundedIcon className='pointer_cursor' />
+                        </div>
+
+                    </form>
 
                 </Modal>
             </div>
