@@ -143,7 +143,7 @@ form h1{
         height: 100vh;
         justify-content: center;
         align-items: center;
-        background-image: linear-gradient(to left, #08AC08, #08AC08);
+        background-image: linear-gradient(to left, #12971263, #1D8D1D2B);
         padding: 10px;
         margin: 10px;
         border-radius: 12px;
@@ -167,7 +167,7 @@ form h1{
         height: auto;
         justify-content: center;
         align-items: center;
-        background-image: linear-gradient(to left, #08AC08, #08AC08);
+        background-image: linear-gradient(to left, #12971263, #1D8D1D2B);
         border-radius: 12px;
         width: 100%;
     }

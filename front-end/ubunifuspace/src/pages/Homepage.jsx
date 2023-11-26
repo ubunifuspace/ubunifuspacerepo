@@ -62,7 +62,7 @@ const Homepage = () => {
             <section>
                 <div className="main_content">
 
-
+                    
                     <Sidebar />
 
                     <div className="center_column">
