@@ -138,13 +138,18 @@ app.post('/create-problem', async (req, res) => {
 
 
 app.get('/problems', async (req, res) => {
+
+
+
     try {
         // Fetch all problems with their associated ideas using a JOIN query
         const results = await queryDatabase(`
             SELECT p.*, i.*
             FROM problem p
-            LEFT JOIN idea i ON p.problem_id = i.problem_id
+            LEFT JOIN idea i ON p.id = i.problem_id
         `);
+
+        console.log(results);
 
         // Organize the data into a suitable structure
         const problemsWithIdeas = results.reduce((acc, row) => {
@@ -165,9 +170,9 @@ app.get('/problems', async (req, res) => {
             }
 
             // Add the idea to the associated problem
-            if (row.idea_id) {
+            if (row.id) {
                 acc[problemId].ideas.push({
-                    idea_id: row.idea_id,
+                    idea_id: row.id,
                     user_id: row.user_id,
                     description: row.description
                 });

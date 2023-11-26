@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import { red } from '@mui/material/colors';
@@ -7,7 +7,45 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { IdeaCard, Sidebar } from '../components';
 
 
+
+
+
 const Homepage = () => {
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState('')
+
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/problems', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+        
+                const responseData = await response.json();
+                setData(responseData?.problemsWithIdeas);
+                console.log(responseData?.problemsWithIdeas);
+            } catch (error) {
+                console.error('An error occurred', error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        
+    
+        fetchData();
+      }, []);
+
+    
 
     const [ opened, { open, close }] = useDisclosure(false);
 
