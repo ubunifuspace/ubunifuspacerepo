@@ -139,42 +139,74 @@ app.post('/create-problem', async (req, res) => {
 
 app.get('/problems', async (req, res) => {
     try {
-        // Fetch all problems
-        const problemsResults = await queryDatabase('SELECT * FROM problem');
+        // Fetch all problems with associated like counts for each idea
+        const query = `
+            SELECT
+                p.id AS problem_id,
+                p.user_id AS problem_user_id,
+                p.title AS problem_title,
+                p.description AS problem_description,
+                p.department AS problem_department,
+                i.id AS idea_id,
+                i.user_id AS idea_user_id,
+                i.description AS idea_description,
+                COUNT(l.id) AS like_count
+            FROM
+                problem p
+            LEFT JOIN
+                idea i ON p.id = i.problem_id
+            LEFT JOIN
+                likes l ON i.id = l.idea_id
+            GROUP BY
+                p.id, p.user_id, p.title, p.description, p.department, i.id, i.user_id, i.description;
+        `;
 
-        // Fetch all ideas
-        const ideasResults = await queryDatabase('SELECT * FROM idea');
+        const results = await queryDatabase(query);
 
         // Organize the data into a suitable structure
-        const problemsWithIdeas = problemsResults.map(problem => {
-            return {
-                problem: {
-                    problem_id: problem.id,
-                    user_id: problem.user_id,
-                    title: problem.title,
-                    description: problem.description,
-                    department: problem.department
-                },
-                ideas: ideasResults.filter(idea => idea.problem_id === problem.id).map(idea => ({
-                    idea_id: idea.id,
-                    user_id: idea.user_id,
-                    description: idea.description
-                })),
-            };
-        });
+        const problemsWithIdeas = results.reduce((acc, row) => {
+            const existingProblem = acc.find(problem => problem.problem_id === row.problem_id);
+
+            // Create the problem if it doesn't exist
+            if (!existingProblem) {
+                const newProblem = {
+                    problem_id: row.problem_id,
+                    user_id: row.problem_user_id,
+                    title: row.problem_title,
+                    description: row.problem_description,
+                    department: row.problem_department,
+                    ideas: [],
+                };
+                acc.push(newProblem);
+                return acc;
+            }
+
+            // Use the existing problem
+            const currentProblem = acc.find(problem => problem.problem_id === row.problem_id);
+
+            currentProblem.ideas.push({
+                idea_id: row.idea_id,
+                user_id: row.idea_user_id,
+                description: row.idea_description,
+                like_count: row.like_count,
+            });
+
+            return acc;
+        }, []);
 
         res.status(200).json({
             success: true,
             problemsWithIdeas: problemsWithIdeas,
         });
     } catch (error) {
-        console.error('Error in fetching problems with ideas', error);
+        console.error('Error in fetching problems with ideas and likes', error);
         res.status(500).json({
             error: true,
             message: 'Error on the server side during data retrieval',
         });
     }
 });
+
 
 
 
@@ -205,8 +237,63 @@ app.post('/create-idea', async (req, res) => {
 });
 
 
+// LIKE AN IDEA ENDPOINT
+app.put('/like-idea/:idea_id', async (req, res) => {
+    try {
+        const { idea_id } = req.params;
+        const { user_id } = req.body;
+
+        // Check if the user has already liked the idea
+        const existingLike = await queryDatabase(
+            'SELECT * FROM likes WHERE user_id = ? AND idea_id = ?',
+            [user_id, idea_id]
+        );
+
+        if (existingLike.length > 0) {
+            // User has already liked the idea, so unlike it
+            await queryDatabase(
+                'DELETE FROM likes WHERE user_id = ? AND idea_id = ?',
+                [user_id, idea_id]
+            );
+
+            return res.status(200).json({
+                success: true,
+                message: 'Successfully unliked the idea',
+            });
+        }
+
+        // User has not liked the idea, so like it
+        const likedIdea = await queryDatabase(
+            'INSERT INTO likes (user_id, idea_id) VALUES (?, ?)',
+            [user_id, idea_id]
+        );
+
+        // Sending a success response
+        res.status(200).json({
+            success: true,
+            message: 'Successfully liked the idea',
+            likedIdea,
+        });
+
+        // Logging the liked idea
+        console.log(likedIdea);
+
+    } catch (error) {
+        // Handling errors
+        console.error('Error in liking/unliking an idea', error);
+        res.status(500).json({
+            error: true,
+            message: 'Error in liking/unliking an idea',
+        });
+    }
+});
 
 
+// GET ALL COMMENTS FOR AN IDEA 
+
+
+
+// ADD A COMMENT FOR AN IDEA
 
 
 

@@ -76,6 +76,10 @@ const Sidebar = () => {
                 })
                 //   window.location.href = '/home'
 
+                setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
+
             } else {
                 //   alert(`Failed to login: ${data.message}`);
                 notifications.show({

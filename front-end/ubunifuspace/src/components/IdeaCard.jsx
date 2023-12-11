@@ -19,8 +19,7 @@ const IdeaCard = ({data}) => {
     const [isExploding, setIsExploding] = useState(false);
     const [like, setIsLiked] = useState(false);
     const [likes, setLikes] = useState({});
-
-    const [idea, setIdea] = useState('')
+    const [idea, setIdea] = useState('');
 
     const handleIdeaChange = (e) => {
         setIdea(e.target.value);
@@ -59,7 +58,6 @@ const IdeaCard = ({data}) => {
             user_id: parsedData.id,
             description: idea,
         }
-
         
         console.log(body);
 
@@ -78,12 +76,17 @@ const IdeaCard = ({data}) => {
 
             if (data.success) {
                 setIdea('')
+
                 notifications.show({
                     title: 'SUCCESS',
                     message: 'Successfully created an Idea on a problem, btw your code is on 🔥🔥🔥',
                     color: 'green',
                     className: 'success-notification'
                 })
+
+                setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
 
             } else {
                 setIdea('')
@@ -125,7 +128,7 @@ const IdeaCard = ({data}) => {
                     <div className="controls_container">
                         <p className="font_heavy position_center">Mon Nov 19 15:23</p>
                         <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>
-                            {showContent ? 'Collapse' : 'Expand'} content
+                            {showContent ? 'Collapse' : 'Expand'} thread
                         </p>
                         <div className="align-start position_center">
                             <WbIncandescentOutlinedIcon rotate={1} />
