@@ -106,10 +106,10 @@ const IdeaCard = ({data}) => {
     return (
         <div>
             {data.map((problem) => (
-                <div key={problem.problem.problem_id} className="grey-bg idea_container">
+                <div key={problem.problem_id} className="grey-bg idea_container">
                     <div className="green_bg">
-                        <p className="idea_title">{problem.problem.title}</p>
-                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.problem.description}</p>
+                        <p className="idea_title">{problem.title}</p>
+                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.description}</p>
                     </div>
 
                     {problem.ideas.map((idea) => (
