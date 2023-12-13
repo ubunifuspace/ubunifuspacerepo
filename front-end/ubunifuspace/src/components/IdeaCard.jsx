@@ -11,8 +11,9 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlined';
 import { notifications } from '@mantine/notifications';
 import ControlContainer from './ControlContainer';
+import StickyControls from './StickyControls';
 
-const IdeaCard = ({data}) => {
+const IdeaCard = ({ data }) => {
 
     const [opened, { open, close }] = useDisclosure(false);
     const [showContent, setShowContent] = useState(false);
@@ -58,7 +59,7 @@ const IdeaCard = ({data}) => {
             user_id: parsedData.id,
             description: idea,
         }
-        
+
         console.log(body);
 
         try {
@@ -86,7 +87,7 @@ const IdeaCard = ({data}) => {
 
                 setTimeout(() => {
                     window.location.reload();
-                  }, 2000);
+                }, 2000);
 
             } else {
                 setIdea('')
@@ -101,10 +102,67 @@ const IdeaCard = ({data}) => {
         }
     }
 
-    
+
 
     return (
         <div>
+            {data.map((problem) => (
+                <div key={problem.problem_id} className="grey-bg idea_container">
+                    <div className="green_bg">
+                        <p className="idea_title">{problem.title}</p>
+                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.description}</p>
+                    </div>
+
+                     {/*
+                    {problem.ideas.map((idea) => (
+                        <div key={idea.idea_id} className={`center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
+                            <div className="solution_card">
+                                <div className="solution_text_container">
+                                    <p>{idea.description}</p>
+                                </div>
+
+                                <ControlContainer idea={idea} />
+
+                            </div>
+                        </div>
+                    ))}
+                        
+                    */}
+
+                    {/*
+                    
+                         <ControlContainer idea={idea} />
+                    */}
+                    <div className={` position_center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
+                    <div className=' three_items'>
+                    {problem.ideas.map((idea) => (
+
+                        <div key={idea.idea_id} class="sticky_main">
+
+                            <p className="sticky_idea"> {idea.description} </p>
+
+                            <StickyControls idea={idea}  />
+                        </div>
+                        ))}
+                    </div>
+                    </div>
+
+                    <div className="controls_container">
+                        <p className="font_heavy position_center">Mon Nov 19 15:23</p>
+                        <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>
+                            {showContent ? 'Collapse' : 'Expand'} thread
+                        </p>
+                        <div className="align-start position_center">
+                            <WbIncandescentOutlinedIcon rotate={1} />
+                            <p className="font_heavy position_center">{problem.ideas.length}</p>
+                        </div>
+                        <p className="font_heavy green_wrap pointer_cursor" onClick={open}>
+                            + Add idea
+                        </p>
+                    </div>
+                </div>
+            ))}
+
             {data.map((problem) => (
                 <div key={problem.problem_id} className="grey-bg idea_container">
                     <div className="green_bg">
@@ -120,7 +178,7 @@ const IdeaCard = ({data}) => {
                                 </div>
 
                                 <ControlContainer idea={idea} />
-                                
+
                             </div>
                         </div>
                     ))}
@@ -145,10 +203,10 @@ const IdeaCard = ({data}) => {
                 <Modal className="grey-bg" opened={opened} onClose={close} size={700} title="What can be done...?" centered>
                     <div>
                         <textarea
-                         rows={10} 
-                         className="text_area"
-                         onChange={handleIdeaChange}
-                         value={idea} ></textarea>
+                            rows={10}
+                            className="text_area"
+                            onChange={handleIdeaChange}
+                            value={idea} ></textarea>
                     </div>
                     <div className="send_item pointer_cursor" onClick={handleSubmitIdea}>
                         <SendRoundedIcon />

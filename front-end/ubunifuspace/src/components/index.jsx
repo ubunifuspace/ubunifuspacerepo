@@ -1,3 +1,5 @@
 export {default as Sidebar} from './Sidebar'
 export {default as IdeaCard} from './IdeaCard'
 export {default as ControlContainer} from './ControlContainer'
+export {default as StickyNote} from './StickyNote'
+export {default as StickyControls} from './StickyControls'

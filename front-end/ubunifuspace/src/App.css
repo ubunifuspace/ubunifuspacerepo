@@ -288,6 +288,7 @@ body {
 
 .font_heavy{
     font-weight: 800;
+    font-size: small;
     padding: 0;
 }
 
@@ -404,4 +405,70 @@ body {
 .no-spacing {
     padding: 0 !important;
     margin: 0 !important;
+}
+
+/* sticky notes */
+
+
+.sticky_main{
+    display: flex;
+    flex-direction: column;
+    background-color: #feff9c;
+    border: solid 2px #feff9c;
+    width: 12rem;
+    height: 12rem;
+    margin: 0.4rem;
+    padding: 0.3rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    rotate: -1deg;
+    border-bottom-right-radius: 25px;
+}
+
+.sticky_main:before, .sticky_main:after{
+  content: '';
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+  bottom: 0px;
+  width: 20px;
+  height: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: -1px -3px 20px rgba(0, 0, 0, 0.4);
+  transform: skew(-5deg) rotate(-2deg) ; 
+}
+
+.sticky_idea{
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+}
+
+.idea_controls{
+    display: flex;
+    align-content: center;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+
+.control_class{
+    padding: 5px;
+    margin: 5px;
+    
+}
+
+.three_items{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: 85%;
+      justify-content: center;
+}
+
+.sticky_idea_controls{
+    display: flex;
+    align-content: center;
+    position: absolute;
+    bottom: 2px;
+    left: 5px;
 }
