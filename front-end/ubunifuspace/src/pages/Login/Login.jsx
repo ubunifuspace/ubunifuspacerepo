@@ -62,21 +62,20 @@ const Login = () => {
 
         <div id="welcome_Note_SignIn_Page">
 
-          <img src="./idea.png" alt="innovation_Space_logo" />
+          <img src="./UbunifuSpace_Logo.png" alt="innovation_Space_logo" />
 
-          <h1>
+          {/* <h1>
             Welcome to <br></br> <span id="ubunifu_Space">UbunifuSpace</span>
-          </h1>
+          </h1> */}
         </div>
       </div>
       <div id="form-SignIn-container">
         <form onSubmit={handleSubmit}>
           <div id="signIn_Components">
-            <div id="signIn_logo">
-
-            </div>
-
             <div id="signIn_Input_Components">
+            <div className="formGroup">
+              <label className="Input_formLabel"><b>Sign in to continue</b></label>
+            </div>
               <div className="formGroup">
                 <label className="Input_formLabel" htmlFor="employeeID">
                   Employee ID
@@ -120,6 +119,9 @@ const Login = () => {
                   New here? <span ><Link id="signUp_link" to="/signup">Sign Up</Link></span>
                 </p>
               </div>
+            </div>
+            <div id="signIn_logo">
+            <div className="trial"></div>
             </div>
           </div>
         </form>
