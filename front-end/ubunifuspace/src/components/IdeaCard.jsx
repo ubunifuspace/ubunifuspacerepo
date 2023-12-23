@@ -19,8 +19,7 @@ const IdeaCard = ({data}) => {
     const [isExploding, setIsExploding] = useState(false);
     const [like, setIsLiked] = useState(false);
     const [likes, setLikes] = useState({});
-
-    const [idea, setIdea] = useState('')
+    const [idea, setIdea] = useState('');
 
     const handleIdeaChange = (e) => {
         setIdea(e.target.value);
@@ -59,7 +58,8 @@ const IdeaCard = ({data}) => {
             user_id: parsedData.id,
             description: idea,
         }
-
+        
+        console.log(body);
 
         try {
             const response = await fetch('http://localhost:5000/create-idea', {
@@ -76,12 +76,17 @@ const IdeaCard = ({data}) => {
 
             if (data.success) {
                 setIdea('')
+
                 notifications.show({
                     title: 'SUCCESS',
                     message: 'Successfully created an Idea on a problem, btw your code is on 🔥🔥🔥',
                     color: 'green',
                     className: 'success-notification'
                 })
+
+                setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
 
             } else {
                 setIdea('')
@@ -101,10 +106,10 @@ const IdeaCard = ({data}) => {
     return (
         <div>
             {data.map((problem) => (
-                <div key={problem.problem.problem_id} className="grey-bg idea_container">
+                <div key={problem.problem_id} className="grey-bg idea_container">
                     <div className="green_bg">
-                        <p className="idea_title">{problem.problem.title}</p>
-                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.problem.description}</p>
+                        <p className="idea_title">{problem.title}</p>
+                        <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.description}</p>
                     </div>
 
                     {problem.ideas.map((idea) => (
@@ -123,7 +128,7 @@ const IdeaCard = ({data}) => {
                     <div className="controls_container">
                         <p className="font_heavy position_center">Mon Nov 19 15:23</p>
                         <p className="font_heavy green_wrap pointer_cursor" onClick={toggleContent}>
-                            {showContent ? 'Collapse' : 'Expand'} content
+                            {showContent ? 'Collapse' : 'Expand'} thread
                         </p>
                         <div className="align-start position_center">
                             <WbIncandescentOutlinedIcon rotate={1} />
@@ -139,9 +144,13 @@ const IdeaCard = ({data}) => {
             <div>
                 <Modal className="grey-bg" opened={opened} onClose={close} size={700} title="What can be done...?" centered>
                     <div>
-                        <textarea rows={10} className="text_area"></textarea>
+                        <textarea
+                         rows={10} 
+                         className="text_area"
+                         onChange={handleIdeaChange}
+                         value={idea} ></textarea>
                     </div>
-                    <div className="send_item pointer-cursor" onClick={handleSubmitIdea}>
+                    <div className="send_item pointer_cursor" onClick={handleSubmitIdea}>
                         <SendRoundedIcon />
                     </div>
                 </Modal>

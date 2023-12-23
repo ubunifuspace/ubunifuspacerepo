@@ -74,7 +74,6 @@ const Homepage = () => {
 
                         <IdeaCard data={data} />
 
-
                     </div>
 
                     <div className="profile_column">
