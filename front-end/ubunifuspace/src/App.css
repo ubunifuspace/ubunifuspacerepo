@@ -14,6 +14,7 @@ html{
 }
 
 body {
+    min-height: 100vh;
     background-color: #8CCB8C;
     margin: 0;
     padding: 0;
@@ -79,13 +80,33 @@ body {
 
 .side_navigation {
     background-color: #fff;
-    /* margin: 1rem; */
+    margin: 0;
     /* border-radius: 20px; */
     display: flex;
     flex-direction: column;
     box-shadow:  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: sticky;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: width 0.2s ease;
+    width: 5%;
+    height: 100vh;
 }
 
+.side_navigation .hide_on_narrow{
+    display: none;
+    transition: font-size 0.3s ease-in;
+}
+
+.side_navigation:hover {
+    width: 13%; /* Set the width you want on hover */
+    /* padding-left: 0.2; */
+}
+
+.side_navigation:hover .hide_on_narrow{
+    display: block;
+}
 /* Media query for screens with a maximum width of 600 pixels */
 @media screen and (max-width: 768px ) {
     .main_content .side_navigation {
@@ -99,12 +120,14 @@ body {
     margin-top: 5rem;
 } */
 
-.side_navigation{
-    /* padding: 0 1rem; */
-    width: 5%;
+/* .side_navigation{
+
+ 
     display: flex;
     flex-direction: column;
-}
+} */
+
+
 
 .center{
     display: flex;
@@ -124,6 +147,7 @@ body {
 .sidenav_content{
     display: flex;
     width: 100%;
+    flex-direction: column;
 }
 
 .align-start{
@@ -132,7 +156,22 @@ body {
 }
 
 .sidenav_container{
-    width: 20%;
+    width: 98%;
+    margin: 0.4rem 0;
+    /* padding-left: 0.2; */
+}
+
+.sidenav_content_box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bottom_placed{
+    position: absolute;
+    bottom: 10px;
+
 }
 
 .sidenav_icon{
@@ -141,7 +180,8 @@ body {
 }
 
 .sidenav_text{
-    font-size: 1rem;
+    font-size: 0.8rem;
+    padding-left: 0.1rem;
     display: flex;
     align-content: start;
     cursor: pointer;
@@ -202,8 +242,8 @@ body {
 }
 
 .line-style{
-    width: 50%;
-    border: 2px solid black;
+    width: 70%;
+    border: 0.5px solid rgb(65, 65, 65);
 }
 
 .stat_number{
