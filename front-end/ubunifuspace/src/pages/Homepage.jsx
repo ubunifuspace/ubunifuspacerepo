@@ -80,14 +80,14 @@ const Homepage = () => {
 
                     </div>
                
-                    {/*
+                  
                     <div className="profile_column">
                         <div className="profile_card column">
                             <div className="center">
                                 <img src="https://chingizpro.github.io/portfolio/img/person.png" className="avatar_image" />
                             </div>
                             <div className="center flex-column">
-                                <p className="faint-text no-spacing">{parsedData?.name}</p> <br />
+                                <p className="faint-text no-spacing">{parsedData?.name}</p> 
                                 <p className="bolder-text">{parsedData?.email}</p>
                             </div>
 
@@ -128,7 +128,7 @@ const Homepage = () => {
 
                         </div>
                     </div>
-                 */}
+            
                     
 
                 </div>
