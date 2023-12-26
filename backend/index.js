@@ -143,6 +143,7 @@ app.get("/problems", async (req, res) => {
                 p.description AS problem_description,
                 p.department AS problem_department,
                 i.id AS idea_id,
+                i.color AS idea_color,
                 i.user_id AS idea_user_id,
                 i.description AS idea_description,
                 COUNT(l.id) AS like_count
@@ -188,6 +189,7 @@ app.get("/problems", async (req, res) => {
         user_id: row.idea_user_id,
         description: row.idea_description,
         like_count: row.like_count,
+        ideaColor: row.idea_color
       });
 
       return acc;
@@ -209,12 +211,14 @@ app.get("/problems", async (req, res) => {
 // IDEAS ENDPOINTS
 app.post("/create-idea", async (req, res) => {
   try {
-    const { problem_id, user_id, description } = req.body;
+    const { problem_id, user_id, description, color } = req.body;
+
+    console.log(color);
 
     // Insert the idea into the database
     const results = await queryDatabase(
-      "INSERT INTO idea (problem_id, user_id, description) VALUES (?, ?, ?)",
-      [problem_id, user_id, description]
+      "INSERT INTO idea (problem_id, user_id, description, color) VALUES (?, ?, ?, ?)",
+      [problem_id, user_id, description, color]
     );
 
     res.status(201).json({
