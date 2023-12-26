@@ -226,3 +226,6 @@ ALTER TABLE `idea`
   ADD COLUMN `idea_likes` INT DEFAULT 0;
 
 
+ALTER TABLE `idea`
+ADD COLUMN `color` varchar(20) DEFAULT NULL;
+
