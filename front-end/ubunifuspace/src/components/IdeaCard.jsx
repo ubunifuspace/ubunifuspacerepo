@@ -105,6 +105,10 @@ const IdeaCard = ({ data }) => {
 
 
     return (
+        <>
+        <div>
+            <p className='bolder-text'>Explore challenges and ideas</p>
+        </div>
         <div>
             {data.map((problem) => (
                 <div key={problem.problem_id} className="grey-bg idea_container">
@@ -214,6 +218,7 @@ const IdeaCard = ({ data }) => {
                 </Modal>
             </div>
         </div>
+        </>
     )
 }
 

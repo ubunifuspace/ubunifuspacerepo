@@ -243,6 +243,8 @@ body {
     line-height: 10px;
 }
 
+
+
 .text_below{
     padding: 0;
     margin: 0;
@@ -260,7 +262,7 @@ body {
 }
 
 .green_bg{
-    border-radius: 20px;
+    border-radius: 14px;
     background-color: #BEE9AF;
     margin: 0.4rem;
     padding: 0.1rem;
@@ -316,24 +318,29 @@ body {
 } */
 
 .controls_container{
+    width: 60%;
     display: flex;
     justify-content: space-between;    
     padding: 0 1.2rem;
     height: min-content;
+    line-height: 10px;
 }
 
 .idea_text{
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0 1.2rem;
     margin: 0.5rem;
+    line-height: 20px;
 }
 
 .idea_title{
-    font-weight: 800;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1rem;
     padding: 0 1.2rem;
     margin: 0.7rem 0.7rem;
+    line-height: 20px;
+
 }
 
 .font_heavy{
