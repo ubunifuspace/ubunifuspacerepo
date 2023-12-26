@@ -105,22 +105,27 @@ const Sidebar = () => {
                         <div className="sidenav_container center_div">
                             <PostAddIcon />
                         </div>
+                          {/*
                         <div className='align_start '>
                             <p className="heavy_head align-start sidenav_text  " onClick={open}>Submit challenge</p>
                         </div>
+                        */}
                     </div>
                     <div className="sidenav_content">
                         <div className="sidenav_container center_div">
                             <ShowChartIcon />
                         </div>
+                        {/*
                         <div className='align_start'>
                             <p className="heavy_head align-start sidenav_text">Track implementation</p>
                         </div>
+                        */}
                     </div>
                     <div className="sidenav_content">
                         <div className="sidenav_container center_div">
                             <HelpOutlineIcon />
                         </div>
+                        
                         <div>
                             <p className="heavy_head align-start sidenav_text">Help</p>
                         </div>

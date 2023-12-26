@@ -52,7 +52,9 @@ const Homepage = () => {
     const [opened, { open, close }] = useDisclosure(false);
 
     return (
-        <div id="homepage_dashboard">
+        <div id="homepage_dashboard">   
+
+        {/*
             <header>
                 <nav className="navbar" >
                     <div>
@@ -63,19 +65,22 @@ const Homepage = () => {
                     </div>
                 </nav>
             </header>
+        */}
 
             <section>
+            
                 <div className="main_content">
 
                     
                     <Sidebar />
-
+                    
                     <div className="center_column">
 
                         <IdeaCard data={data} />
 
                     </div>
-
+               
+                    {/*
                     <div className="profile_column">
                         <div className="profile_card column">
                             <div className="center">
@@ -123,7 +128,12 @@ const Homepage = () => {
 
                         </div>
                     </div>
+                 */}
+                    
+
                 </div>
+            
+
             </section>
 
         </div>
