@@ -287,30 +287,53 @@ app.put("/like-idea/:idea_id", async (req, res) => {
 
 // GET ALL COMMENTS FOR AN IDEA
 
-// Getting comments for a specific idea
-app.get("/api/commentsForIdea/:ideaId", (req, res) => {
-  const ideaId = req.params.ideaId;
 
-  db.query(
-    "SELECT * FROM comments WHERE idea_id = ?",
-    [ideaId],
-    (error, results) => {
-      if (error) {
-        console.error("Error occurred during retrieval", error);
-        return res.status(500).json({
-          error: true,
-          message: "There was an error occurred during retrieval",
-        });
-      } else {
-        console.log("Comments retrieved successfully");
-        res.json({
-          success: true,
-          comments: results,
-        });
-      }
+
+// Getting comments for a specific idea
+app.get("/api/commentsForIdea/:ideaId", async (req, res) => {
+  try {
+    const ideaId = req.params.ideaId;
+
+    // Validate ideaId
+    if (!ideaId || isNaN(ideaId)) {
+      return res.status(400).json({
+        error: true,
+        message: "Invalid ideaId provided",
+      });
     }
-  );
+
+    // Use async/await for database query
+    const results = await dbQuery("SELECT * FROM comments WHERE idea_id = ?", [ideaId]);
+
+    console.log("Comments retrieved successfully");
+    res.status(200).json({
+      success: true,
+      comments: results,
+    });
+  } catch (error) {
+    console.error("Error occurred during retrieval", error);
+    res.status(500).json({
+      error: true,
+      message: "There was an error occurred during retrieval",
+    });
+  }
 });
+
+// Helper function for asynchronous database queries
+function dbQuery(query, params) {
+  return new Promise((resolve, reject) => {
+    db.query(query, params, (error, results) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+}
+
+
+
 
 // ADD A COMMENT FOR AN IDEA
 
