@@ -121,7 +121,7 @@ const IdeaCard = ({ data }) => {
                     <div key={problem.problem_id} className="grey-bg idea_container">
                         <div className="green_bg">
                             <p className="idea_title">{problem.title}</p>
-                            <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>Description: {problem.description}</p>
+                            <p className={`idea_text ${showContent ? 'animate__animated animate__slideInDown animate__bounceIn' : 'hide'}`}>Description: {problem.description}</p>
                         </div>
 
                         {/*
@@ -144,7 +144,7 @@ const IdeaCard = ({ data }) => {
                     
                          <ControlContainer idea={idea} />
                     */}
-                        <div className={` position_center ${showContent ? 'animate__animated animate__slideInDown' : 'hide'}`}>
+                        <div className={` position_center ${showContent ? 'animate__animated animate__bounceIn' : 'hide'}`}>
                             <div className=' three_items'>
                                 {problem.ideas.map((idea) => (
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 12:52 PM
+-- Generation Time: Jan 01, 2024 at 11:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -40,7 +40,13 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `date`, `comment`, `user_id`, `idea_id`) VALUES
-(1, '2023-12-10', 'Lets just test for this', 3, 4);
+(1, '2023-12-10', 'Lets just test for this', 3, 4),
+(2, '2024-01-01', 'Handle errors consistently. Instead of logging the error to the console, send an appropriate error response to the client.', 45, 4),
+(3, '2024-01-01', 'xscddsdcdscdscds', 3, 4),
+(4, '2024-01-01', 'Remember to adapt the error messages and status codes according to your API\'s specific requirements and standards.', 3, 4),
+(5, '2024-01-01', 'great approach but some changes , what i want more is more of a shadow inside the circle and not outside like current implementation', 3, 4),
+(6, '2024-01-01', 'As of my last knowledge update in January 2023, I don\'t have specific information about \"Langchain.\" It\'s possible that there have been developments or new releases since then, and I recommend checking the latest sources, including official documentation, news, or community forums, for the most up-to-date information on \"Langchain.\"', 3, 4),
+(7, '2024-01-01', 'Poleni naomba wote, mlioachwa poleni', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -71,8 +77,9 @@ INSERT INTO `idea` (`id`, `problem_id`, `user_id`, `description`, `idea_likes`, 
 (24, 3, 3, 'cdxdcssd', 0, 'yellow'),
 (25, 3, 3, 'qweqeqw', 0, 'Pink'),
 (29, 3, 3, 'asasqwqwqw', 0, 'Pink'),
-(30, 3, 3, 'ka big g', 0, 'Light-yellow'),
-(31, 3, 3, 'why did you run?', 0, 'light-blue');
+(30, 4, 3, 'ka big g', 0, 'Light-yellow'),
+(31, 4, 3, 'why did you run?', 0, 'light-blue'),
+(32, 5, 45, 'every one should leave his car at home', 56, 'Pink');
 
 -- --------------------------------------------------------
 
@@ -199,13 +206,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `idea`
 --
 ALTER TABLE `idea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `likes`
