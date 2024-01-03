@@ -5,6 +5,8 @@ import { red } from '@mui/material/colors';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { IdeaCard, Sidebar } from '../components';
+import { AvatarGenerator } from 'random-avatar-generator';
+
 
 
 const Homepage = () => {
@@ -16,6 +18,8 @@ const Homepage = () => {
     const parsedData = JSON.parse(userdata);
 
     console.log(parsedData);
+
+    const generator = new AvatarGenerator();
 
 
     useEffect(() => {
@@ -52,7 +56,9 @@ const Homepage = () => {
     const [opened, { open, close }] = useDisclosure(false);
 
     return (
-        <div id="homepage_dashboard">
+        <div id="homepage_dashboard">   
+
+        {/*
             <header>
                 <nav className="navbar" >
                     <div>
@@ -63,26 +69,29 @@ const Homepage = () => {
                     </div>
                 </nav>
             </header>
+        */}
 
             <section>
+            
                 <div className="main_content">
 
                     
                     <Sidebar />
-
+                    
                     <div className="center_column">
 
                         <IdeaCard data={data} />
 
                     </div>
-
+               
+                  
                     <div className="profile_column">
                         <div className="profile_card column">
                             <div className="center">
-                                <img src="https://chingizpro.github.io/portfolio/img/person.png" className="avatar_image" />
+                                <img src={generator.generateRandomAvatar()} className="avatar_image" />
                             </div>
                             <div className="center flex-column">
-                                <p className="faint-text no-spacing">{parsedData?.name}</p> <br />
+                                <p className="faint-text no-spacing">{parsedData?.name}</p> 
                                 <p className="bolder-text">{parsedData?.email}</p>
                             </div>
 
@@ -123,7 +132,12 @@ const Homepage = () => {
 
                         </div>
                     </div>
+            
+                    
+
                 </div>
+            
+
             </section>
 
         </div>

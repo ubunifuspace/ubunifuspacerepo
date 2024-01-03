@@ -3,6 +3,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import InfoIcon from '@mui/icons-material/Info';
+import icon from '../../public/UbunifuSpace.png'
 import PowerSettingsNewRoundedIcon from '@mui/icons-material/PowerSettingsNewRounded';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
@@ -78,7 +79,7 @@ const Sidebar = () => {
 
                 setTimeout(() => {
                     window.location.reload();
-                  }, 2000);
+                }, 2000);
 
             } else {
                 //   alert(`Failed to login: ${data.message}`);
@@ -99,46 +100,51 @@ const Sidebar = () => {
             <>
                 <div className="side_navigation">
                     <div className="center">
-                        <p className="heavy_head">Menu</p>
+                        <img src={icon} width={40} height={40} />
+                        <div className='hide_on_narrow side_text'>
+                            <p className="sidenav_text">UbunifuSpace</p>
+                        </div>
+
                     </div>
+
+                    <hr className="line-style" />
+
                     <div className="sidenav_content">
-                        <div className="sidenav_container center_div">
-                            <PostAddIcon />
+
+                        <div className="sidenav_container sidenav_content_box" onClick={open}>
+                            <div className='center_div'>
+                                <PostAddIcon />
+                            </div>
+                            <div className='hide_on_narrow side_text'>
+                                <p className="sidenav_text">Submit challenge</p>
+                            </div>
                         </div>
-                        <div className='align_start '>
-                            <p className="heavy_head align-start sidenav_text  " onClick={open}>Submit challenge</p>
+
+                        <div className="sidenav_container sidenav_content_box">
+                            <div className='center_div'>
+                                <ShowChartIcon />
+                            </div>
+                            <div className='hide_on_narrow side_text'>
+                                <p className="sidenav_text">Track implementation</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="sidenav_content">
-                        <div className="sidenav_container center_div">
-                            <ShowChartIcon />
+
+                        <div className="sidenav_container sidenav_content_box">
+                            <div className='center_div'>
+                                <HelpOutlineIcon />
+                            </div>
+                            <div className='hide_on_narrow side_text'>
+                                <p className="sidenav_text">Help</p>
+                            </div>
                         </div>
-                        <div className='align_start'>
-                            <p className="heavy_head align-start sidenav_text">Track implementation</p>
-                        </div>
-                    </div>
-                    <div className="sidenav_content">
-                        <div className="sidenav_container center_div">
-                            <HelpOutlineIcon />
-                        </div>
-                        <div>
-                            <p className="heavy_head align-start sidenav_text">Help</p>
-                        </div>
-                    </div>
-                    <div className="sidenav_content">
-                        <div className="sidenav_container center_div">
-                            <InfoIcon />
-                        </div>
-                        <div>
-                            <p className="heavy_head align-start sidenav_text" >About</p>
-                        </div>
-                    </div>
-                    <div className="sidenav_content">
-                        <div className="sidenav_container center_div">
-                            <PowerSettingsNewRoundedIcon style={{ color: 'red' }} />
-                        </div>
-                        <div>
-                            <p className="heavy_head align-start sidenav_text" onClick={logout}>Log out</p>
+
+                        <div className="sidenav_container bottom_placed sidenav_content_box" onClick={logout}>
+                            <div className='center_div'>
+                                <PowerSettingsNewRoundedIcon style={{ color: 'red' }} />
+                            </div>
+                            <div className='hide_on_narrow side_text'>
+                                <p className="sidenav_text">Log out</p>
+                            </div>
                         </div>
                     </div>
                 </div>

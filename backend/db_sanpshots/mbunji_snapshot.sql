@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 25, 2023 at 12:30 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jan 01, 2024 at 11:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -35,6 +35,19 @@ CREATE TABLE `comments` (
   `idea_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `date`, `comment`, `user_id`, `idea_id`) VALUES
+(1, '2023-12-10', 'Lets just test for this', 3, 4),
+(2, '2024-01-01', 'Handle errors consistently. Instead of logging the error to the console, send an appropriate error response to the client.', 45, 4),
+(3, '2024-01-01', 'xscddsdcdscdscds', 3, 4),
+(4, '2024-01-01', 'Remember to adapt the error messages and status codes according to your API\'s specific requirements and standards.', 3, 4),
+(5, '2024-01-01', 'great approach but some changes , what i want more is more of a shadow inside the circle and not outside like current implementation', 3, 4),
+(6, '2024-01-01', 'As of my last knowledge update in January 2023, I don\'t have specific information about \"Langchain.\" It\'s possible that there have been developments or new releases since then, and I recommend checking the latest sources, including official documentation, news, or community forums, for the most up-to-date information on \"Langchain.\"', 3, 4),
+(7, '2024-01-01', 'Poleni naomba wote, mlioachwa poleni', 3, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -45,8 +58,28 @@ CREATE TABLE `idea` (
   `id` int(11) NOT NULL,
   `problem_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `description` varchar(1000) NOT NULL
+  `description` varchar(1000) NOT NULL,
+  `idea_likes` int(11) DEFAULT 0,
+  `color` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `idea`
+--
+
+INSERT INTO `idea` (`id`, `problem_id`, `user_id`, `description`, `idea_likes`, `color`) VALUES
+(3, 3, 3, 'we can send a backup network lnk for you the arusha branch to use, to cover during unstable network times', 0, 'yellow'),
+(4, 3, 3, 'we can buy a starLink router it offers great connectivity regardless of your physical location', 0, 'Light-yellow'),
+(7, 19, 3, 'Maybe we should review our architectur, and make changes to optimise it', 0, 'Light-pink'),
+(17, 3, 3, 'demo', 0, 'Light-pink'),
+(22, 3, 3, 'sassasasas', 0, 'light-blue'),
+(23, 3, 3, 'asasasas', 0, 'yellow'),
+(24, 3, 3, 'cdxdcssd', 0, 'yellow'),
+(25, 3, 3, 'qweqeqw', 0, 'Pink'),
+(29, 3, 3, 'asasqwqwqw', 0, 'Pink'),
+(30, 4, 3, 'ka big g', 0, 'Light-yellow'),
+(31, 4, 3, 'why did you run?', 0, 'light-blue'),
+(32, 5, 45, 'every one should leave his car at home', 56, 'Pink');
 
 -- --------------------------------------------------------
 
@@ -60,6 +93,14 @@ CREATE TABLE `likes` (
   `user_id` int(11) NOT NULL,
   `idea_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `date`, `user_id`, `idea_id`) VALUES
+(1, '2023-12-10 15:21:49', 3, 4),
+(2, '2023-12-10 15:21:49', 45, 3);
 
 -- --------------------------------------------------------
 
@@ -80,7 +121,15 @@ CREATE TABLE `problem` (
 --
 
 INSERT INTO `problem` (`id`, `user_id`, `title`, `description`, `department`) VALUES
-(2, 1, 'waste disposal', 'desc 1', 'env');
+(3, 3, 'Network instability', 'the sales department in arusha is not gettting a stable network connect', 'IT department'),
+(4, 3, 'Poor sales in Mafinga ', 'The sales team in mafnga isn\'t getting enough new customers while other banks do ', 'Sales department'),
+(5, 3, 'Parking at Kariakoo Branch', 'We are having a problem of finding a place where to we can park our cars', 'Administration'),
+(19, 3, 'Delay of Transactions processing', 'When sending money to from SimBanking App to mobile money, there is a huge delay from sending the money and getting the message.', 'operations'),
+(22, 3, 'deffective conputrs', 'most of the computers are not working', 'Information technology'),
+(24, 3, 'demo', 'demo', 'Information technology'),
+(25, 3, 'demo', 'demo', 'Information technology'),
+(26, 3, 'please call me', 'Rewards... i\'m lonely', 'Human resources'),
+(27, 3, 'nnjnj', 'mkkmmkmkmk', 'Human resources');
 
 -- --------------------------------------------------------
 
@@ -103,7 +152,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `staff_id`, `name`, `email`, `password`, `department`, `role_id`) VALUES
-(1, 123, 'john', 'john@gmail.com', '123', 'ict', 1);
+(3, 123, 'john', 'john@gmail.com', '123', 'ict', 1),
+(45, 1234, 'Janeth', 'jmosha@crdb.plc', 'asdfgh', 'Innovation Department', 2);
 
 --
 -- Indexes for dumped tables
@@ -156,31 +206,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `idea`
 --
 ALTER TABLE `idea`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `problem`
 --
 ALTER TABLE `problem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables
@@ -217,15 +267,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
--- MBUNJI'S ADDITIONS START HERE 
-
-ALTER TABLE `idea`
-  ADD COLUMN `idea_likes` INT DEFAULT 0;
-
-
-ALTER TABLE `idea`
-ADD COLUMN `color` varchar(20) DEFAULT NULL;
-
